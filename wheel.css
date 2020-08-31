@@ -1,173 +1,220 @@
-body {
-    background-color: whitesmoke;
-    
+/* @media only screen and (max-width: 1000px) {
+   .right {
+      position: fixed;
+      /* left: 0;
+      bottom: 0;
+      z-index: 40;  */ 
+      /* width: 100%; 
+      display: flex;
+  }
+} */
+
+.left{
+  width: 65%;
+  float:left; 
+  align-content: center;
 }
 
-h1 {
-    text-align: center;
-}
-
-.buttons {
-    text-align: center;
-     
-    
-    
-}
-
-#b1 {
-  width: 250px;
-  height: 80px;
-  border: 2px solid #4CAF50;
-  border-radius: 10px;
-  font-size: medium;
-  cursor: pointer;
+.right{
+  width: 35%;
+  background-color: rgb(53, 151, 138);
+   float : right;
   
-  
-  
-}
-
-#b1:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-  
-
-#b2 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    
-    font-size: medium;
-    cursor: pointer;
-    
-     
-     
-     
 }  
 
-#b2:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-#b3 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-}
-    
-
-#b3:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-#b4 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-    
-}
-
-#b4:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-
+body {
+  background-color: honeydew;
+  background-image: url('decision.jpg');
   
-    
-  
-
-#b5 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-   
 }
 
-#b5:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
+/*_______________________________#######################_________________________________*/
 
-#b6 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-    
+.buttons {
+  text-align: center;
 }
 
-#b6:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-
-#b7 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-    
+.btn {
+  max-width: 180px;
+  height: 80px;
+  border: 5px solid #485048;
+  border-radius: 10px;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+  width: 100%;
 }
 
-#b7:hover {
-    background-color: #4CAF50;
-    color: white;
-
-  }
-
-
-
-#b8 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
+.btn:hover {
+  background-color: #ca4747;
+  color: white;
 }
-    
-
-#b8:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-#b9 {
-    width: 250px;
-    height: 80px;
-    border: 2px solid #4CAF50;
-    border-radius: 10px;
-    font-size: medium;
-    cursor: pointer;
-    
-}
-
-#b9:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
 
 #b10 {
-    width: 250px;
-    height: 80px;
-    background-color: burlywood;
-    border-radius: 10px;
-    font-size: x-large;
-    cursor: pointer;
+  max-width: 200px;
+  height: 80px;
+  background-color: rgb(20, 151, 190);
+  border-radius: 10px;
+  font-size: x-large;
+  cursor: pointer;
+  width: 100%;
+  margin:15px;
 } 
+
+/*_______________________________#######################_________________________________*/
+#txtarea {
+  min-width: 99%;
+  max-width: 99%;
+  min-height: 70px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 150px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 65%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.6s;
+  animation-name: animatetop  ;
+  animation-duration: 0.6s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #4e8fa3;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #4e8fa3;
+  color: white;
+  height:50%;
+}
+
+.s1{
+  border: 5px solid #485048;
+  border-radius: 10px;
+  font-size: x-large;
+  font-weight: bold;
+  cursor: pointer;
+  margin:auto;
+  display: flex;
+  height: auto;
+  padding: 2px 16px;
+}
+
+/*_______________________________#######################_________________________________*/
+
+.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 150px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 65%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content2 {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.6s;
+  animation-name: animatetop  ;
+  animation-duration: 0.6s
+}
+
+.modal-header2 {
+  padding: 2px 16px;
+  background-color: #4e8fa3;
+  color: white;
+}
+
+.modal-body2 {padding: 2px 16px;}
+
+.modal-footer2 {
+  padding: 2px 16px;
+  background-color: #4e8fa3;
+  color: white;
+  height:50%;
+}
+
+.close2 {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* #inputarea {
+   min-width: 99%;
+  max-width: 99%; 
+
+} */

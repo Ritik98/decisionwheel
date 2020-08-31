@@ -1,177 +1,114 @@
+// Get the modal
+var modal = document.getElementById("myModal");
 
-    console.log("click");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+var answers = [];
+
+var questions = [" 1. What is Problem ?",
+ "2. What are the Choices ?",
+  "3. what can be the Consequences?",
+   "4. What are the Values ?",
+    "5. How are you Feeling ?",
+     "6.  Anything More you want to share ?",
+      "7. Who Can Help ?",
+       "8. what is your Decision ?",
+        "9. Assess Decision"];
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-function  fun1() {
-   
-    document.getElementById("b2").disabled = false;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
+function show(btn) 
+{
+  document.getElementById(btn.id).disabled = false;
+  var str1 = btn.id;
+  var num = parseInt(str1.charAt(1)) + 1;
+  var str2 = num.toString();
+  var nid = 'b'.concat(str2);
+  var qno = parseInt(str1.charAt(1)) - 1;
+  var question = questions[qno];
 
-    
-    var b1 = window.prompt("What is the problem? ");
-        alert("Your answer is " + b1);
-        document.getElementById("b1").disabled = true;
-        
+  var x = document.getElementById("q").innerHTML = question;
+  document.getElementById("txtarea").value = "";
+
+  modal.style.display = "block";
+  document.getElementById(nid).disabled = false;
+  document.getElementById(btn.id).disabled = true;
 }
 
 
-function  fun2() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b3").disabled = false;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
 
-    var b2 = window.prompt("What is the choices? ");
-    alert("Your answer is " + b2);
-   
-    document.getElementById("b2").disabled = true;
 
-   
+
+//------------------------------------------------------------------------------------------
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  answers.push("");
+  modal.style.display = "none";
 }
 
-function  fun3() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b4").disabled = false;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
+//----------------------------------------------------------------------------------------
 
-    var b3 = window.prompt("What is the consequences? ");
-    alert("Your answer is " + b3);
-    document.getElementById("b3").disabled = true;
+function storingAnswers() {
+  var ans = document.getElementById("txtarea").value;
+  answers.push(ans);
+  console.log(ans);
+  console.log(answers);
+  modal.style.display = "none";
 }
 
-function  fun4() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b5").disabled = false;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
 
-    var b4 = window.prompt("What is the values? ");
-    alert("Your answer is " + b4);
-    document.getElementById("b4").disabled = true;
+//----------------------------------------------------------------------------------------
+var modal2 = document.getElementById("myModal2");
+
+var span2 = document.getElementsByClassName("close2")[0];
+
+function show2(btn) 
+{
+  document.getElementById(btn.id).disabled = false;
+  var str1 = btn.id;
+  var num = parseInt(str1.charAt(1)) + 1;
+  var str2 = num.toString();
+  var nid = 'b'.concat(str2);
+  var qno = parseInt(str1.charAt(1)) - 1;
+  var question = questions[qno];
+
+  var x = document.getElementById("q2").innerHTML = question;
+
+  modal2.style.display = "block";
+  document.getElementById(nid).disabled = false;
+  document.getElementById(btn.id).disabled = true;
 }
 
-function  fun5() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b6").disabled = false;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
+span2.onclick = function () {
+    modal2.style.display = "none";
+  }
 
-    var b5 = window.prompt("What is the feelings? ");
-    alert("Your answer is " + b5);
-    document.getElementById("b5").disabled = true;
-}
 
-function  fun6() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b7").disabled = false;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
+  var newinput = function() {
+    var id = 1;
+    var parent = document.getElementById("container to ad");
+    console.log(parent);
+    var field = document.createElement("input")
+    field.className = "myclassname"
+    field.style = "display:block;"
+    field.id = "input" + id;
+    parent.appendChild(field);
+    id += 1;
+  }
 
-    var b6 = window.prompt("can you share more info? ");
-    alert("Your answer is " + b6);
-    document.getElementById("b6").disabled = true;
-}
 
-function  fun7() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b8").disabled = false;
-    document.getElementById("b9").disabled = true;
-    document.getElementById("b10").disabled = true;
-
-    var b7 = window.prompt("What do you think who can help you? ");
-    alert("Your answer is " + b7);
-    document.getElementById("b7").disabled = true;
-}
-
-function  fun8() {
-   
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b9").disabled = false;
-    document.getElementById("b10").disabled = true;
-
-    var b8 = window.prompt("What is the decision? ");
-    alert("Your answer is " + b8);
-    document.getElementById("b8").disabled = true;
-}
-
-function  fun9() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b10").disabled = false;
-
-    var b9 = window.prompt("What is the assess decision? ");
-    alert("Your answer is " + b9);
-    document.getElementById("b9").disabled = true;
-}
-
-function  fun10() {
-    
-    document.getElementById("b1").disabled = true;
-    document.getElementById("b2").disabled = true;
-    document.getElementById("b3").disabled = true;
-    document.getElementById("b4").disabled = true;
-    document.getElementById("b5").disabled = true;
-    document.getElementById("b6").disabled = true;
-    document.getElementById("b7").disabled = true;
-    document.getElementById("b8").disabled = true;
-    document.getElementById("b9").disabled = true;
-    
-}
-
+  function storingchoices() {
+    choicearray=[];
+    var choices = document.getElementsByClassName("myclassname");
+    console.log(choices.item);
+    for (var i = 0; i < choices.length; i++)
+    {
+        choicearray.push(choices[i].value)
+    }
+        console.log(choicearray);
+    modal2.style.display = "none";
+  }
+  

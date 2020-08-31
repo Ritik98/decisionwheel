@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Registration Form</title>
+       <link rel="stylesheet" href="reg.css">
+       
+
+    </head>
+    <body>
+        <div class="reg">
+            <h1>Register Here</h1>
+            
+            <hr>
+            <p>Create your account. It,s free and only takes a minute.</p>
+            <form>
+           
+               <div>
+                    <input type="text" name="myName" class="box1" id="fname" placeholder="First Name"&nbsp; required/>
+                    <input type="text" name="myName" class="box1" id="lname" placeholder="Last Name"&nbsp; required/>
+               </div>
+               <br>
+               <div>
+                   <input name ="email" class="box" id="mail" type="email" placeholder="Email(e.g.,blah@blah.blah)" cols="40" rows="4"   required/>
+               </div>
+                <br>
+               <div>
+                    <select>
+                        <option>+91</option>
+                        <option>+1</option>
+                    </select>
+                    <input type="phone" name="myPhone" class="box2" id="num" placeholder="Mobile No." maxlength="10" required/>
+                </div>
+                <br>
+                <div>
+                    <input type="password" name="psw" class="box" id="pswrd" placeholder="Password" required/>
+                </div> 
+                <br>
+                <div>
+                    <input type="password" name="psw" class="box" id="pswr" placeholder="Confirm Password" required/>
+                </div> 
+                <br>
+                 
+                <br>
+                <hr>
+                <br>
+                <div>
+                    <button onclick="registrationform()" type="button">Register Now</button>
+                </div>
+                <br>
+                <a href = "log.html" >Already a member? Login </a>
+
+            </form>
+        </div>
+        <script src="reg.js"></script>
+        
+        
+    
+    </body>
+</html>
