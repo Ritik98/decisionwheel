@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wheel.css">
+    <title>New interface </title>
+</head>
+
+<body>
+    <div class="left">
+        <h1> Decision Making Tree</h1>
+        <br>
+        <div class="buttons">
+
+            <div class="row4">
+                <button class="btn" type="button" onclick="show(this)" id="b1"> 1. Problem </button>
+            </div>
+            <div class="row1">
+                <button class="btn" type="button" onclick="show2(this)" id="b2" disabled> 2. Choices </button>
+
+                <button class="btn" type="button " onclick="show3(this)" id="b3" disabled> 3. Consequences </button>
+            </div>
+
+            <div class="row2">
+                <button class="btn" type="button" onclick="show(this)" id="b4" disabled> 4. Values </button>
+
+                <button class="btn" type="button" onclick="show(this)" id="b5" disabled> 5. Feelings </button>
+
+                <button class="btn" type="button " onclick="show(this)" id="b6" disabled> 6. More Info</button>
+            </div>
+            <div class="row3">
+                <button class="btn" type="button" onclick="show(this)" id="b7" disabled> 7. Who Can Help </button>
+                <button class="btn" type="button" onclick="show(this)" id="b8" disabled> 8. Decision </button>
+
+                <button class="btn" type="button " onclick="show(this)" id="b9" disabled> 9. Assess Decision </button>
+                <button class="btn" type="button " onclick="show(this)" id="b11z" disabled> 9. Assess Decision </button>
+            </div>
+            <div class="row4">
+                <button type="button" onclick="window.location.reload()" id="b10" disabled>SUBMIT</button>
+            </div>
+        </div>
+
+        <!-- -------------------------------------------------------------------------------------------- -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 id="q">Question..........?</h2>
+                </div>
+                <div class="modal-body">
+                    <h3>Your Answer :</h3>
+                    <textarea id="txtarea" name="message"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button class="s1" type="button" onclick="storingAnswers()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!-- -------------------------------------------------------------------------------------------- -->
+        <div id="myModal2" class="modal2">
+            <!-- Modal content -->
+            <div class="modal-content2">
+                <div class="modal-header2">
+                    <span class="close2">&times;</span>
+                    <h2 id="q2">Question..........?</h2>
+                </div>
+                <div class="modal-body2">
+                    <h3>Your Answer</h3>
+                    <div id="container-to-ad">Click plus to add input
+                        <input class="myclassname" id="input0" style="display: block;">
+                    </div>
+                    <div >
+                        <button type="button" name="button" onclick="newinput()">+ Choice</button>
+                        <button type="button" name="button" onclick="delinput()">- Choice</button>
+                    </div>
+                </div>
+                <div class="modal-footer2">
+                    <div>
+                        <button class="s1" type="button" onclick="storingAnswers()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+              <!-- -------------------------------------------------------------------------------------------- -->
+              <div id="myModal3" class="modal3">
+                <div class="modal-content3">
+                    <div class="modal-header3">
+                        <span class="close3">&times;</span>
+                        <h2 id="q3">Question..........?</h2>
+                    </div>
+                    <div class="modal-body3">
+                        <div id="container-to-ad-1">Consequences
+                            <input class="myclassname2" id="input10" style="display: block;">
+                        </div>
+                        <div >
+                            <button type="button" name="button" onclick="newinput1()">+ Add</button>
+                            <button type="button" name="button" onclick="delinput1()">- Remove</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer3">
+                        <div>
+                            <button class = "s1"  id = "s0" type="button" onclick="bck()" disabled>Back</button>
+                            <button class = "s1" id = "s1" type="button" onclick="nxt()" >Next >></button>
+                            <button class="s2"   id = "s2" type="button" onclick="nxt()" disabled>--Submit--</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class=" right">
+        <h1> Preview Table</h1>
+    </div>
+    <script src="exp1.js"></script>
+
+</body>
+
+</html>

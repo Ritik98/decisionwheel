@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cons.css">
+    <title>Consequences</title>
+</head>
+<body>
+    <button class="btn" type="button " onclick="show(this)" id="b3" > 3. Consequences </button>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="q">Question..........?</h2>
+            </div>
+            <div class="modal-body">
+                <div id="container-to-ad">Consequences
+                    <input class="myclassname" id="input0" style="display: block;">
+                </div>
+                <div >
+                    <button type="button" name="button" onclick="newinput()">+ Choice</button>
+                    <button type="button" name="button" onclick="delinput()">- Choice</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <button class = "s1"  id = "s0" type="button" onclick="bck()" disabled>Back</button>
+                    <button class = "s1" id = "s1" type="button" onclick="nxt()"  >Next</button>
+                    <button class="s2"   id = "s2" type="button" onclick="nxt()" disabled>Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="cons.js"></script>
+</body>
+</html>
