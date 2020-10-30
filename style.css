@@ -1,0 +1,304 @@
+
+@media only screen and (min-width: 50em)
+/* ---for pc and dekstop ---*/
+{
+Body{
+    background-color: bisque;
+}
+/*-------------------------------------------------------------------------------------- */
+#headerarea{
+    margin-top: 0%;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    height: 9%;
+    padding:1px;
+    font-size: 2.5rem;
+    border-radius: 5px 60px;
+    margin-bottom: 9px;
+}
+#parentdiv{
+    background-color: #81ee85e7;
+    height: 100vh;
+    border-radius: 5px;
+}
+#buttonarea{
+    width: 21%;
+    height:87%;
+    float: left;
+    background-color: aliceblue;
+    text-align: center;
+    margin: 6px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+#viewarea{
+    float: right;
+    width: 75%;
+    height:87%;
+    max-height: 90%;
+    background-color: rgba(230, 125, 125, 0.842);
+    text-align: center;
+    margin: 6px;
+    border-radius: 6px;
+    margin-right: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+/*-------------------------------------------------------------------------------------- */
+.btn {
+    border: none;
+    display: block;
+    width: 90%;
+    padding: 10px 5px;
+    text-align: center;
+    font-size:large;
+    font-weight: 700;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin:4%;
+    background-color: white; 
+    border: 2px solid #4CAF50;
+    border-radius:10px;
+}
+.btn:hover {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #f39417;
+
+}
+.btn:enabled{
+    background-color: #81ee85be;
+    color: rgb(71, 70, 70);
+    /* border: 2px solid #042147cc; */
+    border: 2px solid #4CAF50;
+}
+.btn:enabled:hover{
+    background-color: #941212ec;
+    color:white;
+    border: 4px solid #e09090d8;
+    transition-duration: 0.1s;
+}
+#buttons{
+    align-items: center;
+    height: 100%;
+}
+/*-------------------------------------------------------------------------------------- */
+#previewheading{
+    margin:0%;
+    background-color: rgb(160, 36, 36);
+    color: bisque;
+    padding: 4px;
+    font-size: 2rem;
+    border-radius: 5px 60px;
+}
+/*-------------------------------------------------------------------------------------*/
+
+
+.content , h3{
+    display: inline-block;
+    margin: 1% 0.5%;
+}
+
+.out{
+    background-color: rgba(248, 247, 244, 0.849);
+    margin: 9px;
+    border-radius: 4px;
+}
+h3{
+    font-size: 1.3rem;
+    
+}
+.content{
+    font-size: 1.2rem;
+    font-weight: 535;
+    font-style: italic;
+}
+#previewviewarea{
+    width: 100%;
+    max-height: 100vh;
+}
+
+
+.editbutton{
+    float: right;
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+#iQuestion{
+    font-size: 2.5rem;
+    margin:0%;
+    width: 99.3%;
+    background-color: rgb(160, 36, 36);
+    color: bisque;
+    padding: 4px;
+    font-size: 2rem;
+    border-radius: 5px 60px;
+    margin-bottom: 5px;
+}
+
+#iContext{
+    background-color: rgba(194, 52, 52, 0.733);
+    border-radius: 5px 60px;
+    font-size: 2rem;
+    padding: 0px 50px;
+    width: fit-content;
+    color: antiquewhite;
+}
+
+#iResponse{
+    font-size: 30px;
+    background-color: rgba(243, 209, 209, 0.877);
+
+    margin: 50px;
+    border: 3px solid rgb(153, 14, 14);
+    padding: 20px;
+    max-width: 75%;
+    min-width: 75%;
+    min-height: 180px;
+    max-height: 180px;
+    /* max-height: 180px
+    min-height: 180px;
+    max-width: 750px;
+    min-width:750px; */
+}
+#InputNewBtn{
+  background-color: #bb3c3cdc; /* Green */
+  border: 2px solid rgb(116, 1, 1);
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+#InputNewBtn:hover{
+    background-color: rgba(194, 3, 3, 0.973);
+    color: rgb(255, 236, 127);
+    transition-duration: 0.3s;
+
+}
+#InputNewBtn:disabled{
+    display: none;
+}
+#InputRemoveBtn{
+    background-color: #bb3c3cdc; /* Green */
+    border: 2px solid rgb(116, 1, 1);
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+#InputRemoveBtn:hover{
+    background-color: rgba(194, 3, 3, 0.973);
+    color: rgb(255, 236, 127);
+    transition-duration: 0.3s;
+}
+#InputRemoveBtn:disabled{
+    display: none;
+}
+#InputPreviousBtn{
+    background-color: #bb3c3cdc; /* Green */
+  border: 2px solid rgb(116, 1, 1);
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#InputPreviousBtn:hover{
+    background-color: rgba(194, 3, 3, 0.973);
+    color: rgb(255, 236, 127);
+    transition-duration: 0.3s;
+}
+
+#InputPreviousBtn:disabled{
+    display: none;
+}
+#InputNextBtn{
+    background-color: #bb3c3cdc; /* Green */
+    border: 2px solid rgb(116, 1, 1);
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+#InputNextBtn:hover{
+    background-color: rgba(194, 3, 3, 0.973);
+    color: rgb(255, 236, 127);
+    transition-duration: 0.3s;
+}
+#InputNextBtn:disabled{
+    display: none;
+}
+#s4{
+    background-color: #bb3c3cdc; /* Green */
+    border: 2px solid rgb(116, 1, 1);
+    color: white;
+    padding:10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+#s4:hover{
+    background-color: rgba(194, 3, 3, 0.973);
+    color: rgb(255, 236, 127);
+    transition-duration: 0.3s;
+}
+#s4:disabled{
+    display: none;
+}
+
+.ibtn{
+    margin: 5px;
+}
+
+#iDecision{
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+#a{
+    background-color: #bb3c3cdc;
+    border: 2px solid rgb(116, 1, 1);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;margin-left: 1PX;
+}
+
+#generate{
+    background-color: #bb3c3cdc;
+    border: 2px solid  rgb(116, 1, 1);
+    border-radius: 4px;
+    color: white;
+}
+#generate:disabled{
+    background-color: #8f7979ad;
+    border: 2px solid  rgb(19, 13, 13);
+    border-radius: 4px;
+    color:black;
+}
+}
