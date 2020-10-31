@@ -9,11 +9,26 @@ var App =
 
 var DataEntryPane = 
 {
+    "Questions" : [
+        "What is Problem ?",
+        "What are the choices?",
+        "What are the consequences ?",
+        "What are the values?",
+        "What are your feelings ?",
+        "Anything More you want to share ?",
+        "Who Can Help ?",
+        "What is your Decision ?",
+        "Assess Decision"
+    ],
     SubmitInput()
     {
         $("#userdataentrybox").hide();
         $("#previewviewarea").show();
         MainButtons.enableNextButton();
+    },
+    show(){
+        $("#iQuestion").text(this.Questions[App.State.CurrentStage]);
+        $("#userdataentrybox").show();
     }
 
 }
@@ -37,7 +52,8 @@ var MainButtons =
         this.disableCurrentButton();
         // show edit pare
         // hide preview pare
-        $("#userdataentrybox").show();
+        DataEntryPane.show();
+
         $("#previewviewarea").hide();
     }
 }
