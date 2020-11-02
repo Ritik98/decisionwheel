@@ -10,11 +10,13 @@ var App =
         [],
         [],
         "",
-        [],
+        "",
         "",
         ""
     ]
 }
+
+
 
 var DataEntryPane =
 {
@@ -29,13 +31,17 @@ var DataEntryPane =
         "What is your Decision ?",
         "Assess Decision"
     ],
+    "IsList": [ false, true, true, true, true , false, false , false , false],
+    "pivot": 1,
+    "dependentlist": [ false, false, true, true, true , false, false , false , false],
     SubmitInput() {
         var response = $.trim($("#iResponse").val());
         if (response == "") {
             alert("Give some response");
             return;
         }
-        if ((App.State.CurrentStage == 1)||(App.State.CurrentStage == 6)){
+        if ( this.IsList[App.State.CurrentStage])
+        {
             this.addNew();
         }
         else{
@@ -51,7 +57,7 @@ var DataEntryPane =
     show() {
         $("#iQuestion").text(this.Questions[App.State.CurrentStage]);
         $("#userdataentrybox").show();
-        if ((App.State.CurrentStage == 1)||(App.State.CurrentStage == 6))
+        if (this.IsList[App.State.CurrentStage])
             $("#InputNewBtn").prop('disabled', false);
         else
             $("#InputNewBtn").prop('disabled', true);
