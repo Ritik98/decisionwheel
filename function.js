@@ -12,7 +12,9 @@ var App = {
     "",
     "",
     ""
-  ]
+  ],
+  "edit":-1
+
 }
 $(document).ready(function() {
   MainButtons.enableCurrentButton();
@@ -48,6 +50,16 @@ var DataEntryPane = {
       alert("Give some response");
       return;
     }
+    if (App.edit!=-1){
+      App.UserData[App.edit]=response;
+      App.edit=-1;
+      $("#iResponse").val("");
+      PreviewPane.refresh();
+      $("#userdataentrybox").hide();
+      $("#previewviewarea").show();
+      return;
+    }
+    
     if (this.IsList[App.State.CurrentStage]) {
       this.addNew();
     } else if (!(this.dependentlist[App.State.CurrentStage])) {
@@ -108,8 +120,23 @@ var DataEntryPane = {
     $("#iResponse").val("");
   }
 }
-
+var editPane={
+  edit(btn){
+    var data=App.UserData[btn];
+    $("#previewviewarea").hide();
+    $("#iResponse").val(data);
+    this.editShow();
+    App.edit=btn;
+    $("#InputNewBtn").prop('disabled', true);
+    $("#iQuestion").text(DataEntryPane.Questions[btn]);
+  },
+  editShow(){
+    $("#userdataentrybox").show();
+    
+  }
+}
 var PreviewPane = {
+  
   refresh() {
     controls = ["#p1", "#p2", "#p3", "#p4", "#p5", "#p6", "#p7", "#p8", "#p9"];
     for (var i = 0; i < controls.length; i++)
