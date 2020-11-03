@@ -1,11 +1,11 @@
 var App =
 {
     "State": {
-        "CurrentStage": 0
+        "CurrentStage": 2
     },
     "UserData": [
-        "",
-        [],
+        "This is the problem",
+        ["choice 1" , "choice 2" , "choice 3" , "choice 4"],
         [],
         [],
         [],
@@ -92,7 +92,6 @@ var DataEntryPane =
             alert("Give some response");
             return;
         }
-
         if(App.UserData[this.pivot].length-1==this.incr)
         {
             $("#InputNextBtn").prop('disabled', true);
