@@ -18,7 +18,6 @@ var App =
 $( document ).ready(function() {
     MainButtons.enableCurrentButton();
     PreviewPane.refresh();
-
 });
 var DataEntryPane =
 {
@@ -36,13 +35,13 @@ var DataEntryPane =
     "IsList": [ false, true, false, false, false , false, false , false , false],
     "pivot": 1,
     "dependentlist": [ false, false, true, true, true , false, false , false , false],
-     "incr" : 0,
+     "incr" : 1,
 
     /**
      * If this is a list type
      * and this is not a pivot
      * find out how many items should be there in the list
-     * 
+     *
      * when it is the last item, show submit, instead of add more
      */
     SubmitInput() {
@@ -55,14 +54,14 @@ var DataEntryPane =
         {
             this.addNew();
         }
-        else{
+         else if(!(this.dependentlist[App.State.CurrentStage])){
             App.UserData[App.State.CurrentStage] = response;
             $("#iResponse").val("");
         }
         if(this.dependentlist[App.State.CurrentStage])
         {
             App.UserData[App.State.CurrentStage].push(response);
-            this.incr=0;
+            this.incr=1;
         $("#iResponse").val("");
         }
         PreviewPane.refresh();
@@ -93,12 +92,12 @@ var DataEntryPane =
             alert("Give some response");
             return;
         }
-        this.incr++;
         if(App.UserData[this.pivot].length-1==this.incr)
         {
             $("#InputNextBtn").prop('disabled', true);
              $("#s4").prop('disabled', false);
         }
+        this.incr++;
         App.UserData[App.State.CurrentStage].push(response);
         $("#iResponse").val("");
     },
