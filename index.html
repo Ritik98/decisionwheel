@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>experimental interface of decision wheel</title>
+    <title>Decision Making Tool</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <h1 id="headerarea">Decision Making Tool</h1>
         <div id="buttonarea">
             <div id="buttons">
-                <button class="btn" id="b1" onclick="MainButtons.collectresponse(this)">Problem</button>
+                <button class="btn" id="b1" onclick="MainButtons.collectresponse(this)" disabled>Problem</button>
                 <button class="btn" id="b2" onclick="MainButtons.collectresponse(this)" disabled>Choices</button>
                 <button class="btn" id="b3" onclick="MainButtons.collectresponse(this)" disabled>Consequences</button>
                 <button class="btn" id="b4" onclick="MainButtons.collectresponse(this)" disabled>Values</button>
@@ -36,12 +36,12 @@
                 <textarea id="iResponse" style="text-align: center;"></textarea>
                 <br>
                 <div style="text-align: center;">
-                    <button class="ibtn" type="button" id="InputNewBtn" onclick="AddNew()" disabled> Add More </button>
+                    <button class="ibtn" type="button" id="InputNewBtn" onclick="DataEntryPane.addNew()" disabled> Add More </button>
                     <button class="ibtn" type="button" id="InputRemoveBtn" onclick="RemoveCurrent()" disabled> Remove
                     </button>
                     <button class="ibtn" type="button" id="InputPreviousBtn" onclick="ShowPrevious()" disabled> Previous
                     </button>
-                    <button class="ibtn" type="button" id="InputNextBtn" onclick="ShowNext()" disabled>&nbsp; Next
+                    <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.showNext()" disabled>&nbsp; Next
                         &nbsp;</button>
                     <button class="ibtn" type="button" id="s4" onclick="DataEntryPane.SubmitInput()"> Submit </button>
                 </div>
@@ -66,10 +66,10 @@
                     <button class="out" style="display: inline;" id="a" onclick="selectchoice()"> CONFIRM </button>
                 </div>
                 <div class="out">
-                    
+
                     <h3>CHOICE :</h3>
                     <P class="content" id="p2">CHOICE </P>
-                    
+
                 </div>
                 <div class="out">
                     <h3>CONSEQUENCES :</h3>
@@ -107,8 +107,8 @@
 
         </div>
     </div>
-    <script src="function.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="function.js"></script>
 
 </body>
 
