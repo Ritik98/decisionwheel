@@ -13,10 +13,11 @@ var App = {
     "",
     ""
   ],
-  "edit":-1
-
+  "edit": -1,
+  EDIT_MODE : false
 }
-$(document).ready(function() {
+
+$(document).ready(function () {
   MainButtons.enableCurrentButton();
   PreviewPane.refresh();
 });
@@ -50,16 +51,16 @@ var DataEntryPane = {
       alert("Give some response");
       return;
     }
-    if (App.edit!=-1){
-      App.UserData[App.edit]=response;
-      App.edit=-1;
+    if (App.EDIT_MODE) {
+      App.UserData[App.edit] = response;
+      App.EDIT_MODE = false;
       $("#iResponse").val("");
       PreviewPane.refresh();
       $("#userdataentrybox").hide();
       $("#previewviewarea").show();
       return;
     }
-    
+
     if (this.IsList[App.State.CurrentStage]) {
       this.addNew();
     } else if (!(this.dependentlist[App.State.CurrentStage])) {
@@ -120,23 +121,30 @@ var DataEntryPane = {
     $("#iResponse").val("");
   }
 }
-var editPane={
-  edit(btn){
-    var data=App.UserData[btn];
-    $("#previewviewarea").hide();
+var editPane = {
+  edit(button_index) {
+    App.EDIT_MODE = true ;
+    var data = App.UserData[button_index];
+    PreviewPane.hide();
     $("#iResponse").val(data);
     this.editShow();
-    App.edit=btn;
+    App.edit = button_index;
     $("#InputNewBtn").prop('disabled', true);
-    $("#iQuestion").text(DataEntryPane.Questions[btn]);
+    $("#iQuestion").text(DataEntryPane.Questions[button_index]);
   },
-  editShow(){
+  editShow() {
     $("#userdataentrybox").show();
-    
+
   }
 }
 var PreviewPane = {
-  
+  show() {
+    $("#previewviewarea").show();
+  },
+  hide() {
+    $("#previewviewarea").hide();
+  },
+
   refresh() {
     controls = ["#p1", "#p2", "#p3", "#p4", "#p5", "#p6", "#p7", "#p8", "#p9"];
     for (var i = 0; i < controls.length; i++)
