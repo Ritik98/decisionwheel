@@ -15,22 +15,15 @@ var App = {
   ],
   "edit": -1,
   EDIT_MODE: false,
-  showView(toggle) {
-    if (toggle == "dataEntry") {
-      $("#previewviewarea").hide();
-      $("#userdataentrybox").show();
-    }
-    else if (toggle == "preview") {
-      $("#previewviewarea").show();
-      $("#userdataentrybox").hide();
-    }
+  last_visible_view: "preview",
+  showView(viewname) {
+    viewmap = {"preview" :  "#previewviewarea" , "dataEntry" : "#userdataentrybox" };
+    $(viewmap[this.last_visible_view]).hide();
+    this.last_visible_view =  viewname ;
+    $(viewmap[this.last_visible_view]).show();
   }
 }
 
-$(document).ready(function () {
-  MainButtons.toggleButton(App.State.CurrentStage,true);
-  PreviewPane.refresh();
-});
 var DataEntryPane = {
   "Questions": [
     "What is Problem ?",
@@ -124,27 +117,31 @@ var DataEntryPane = {
   },
   setView(btnIndex){
     $("#iQuestion").text(this.Questions[btnIndex]);
-  }
-}
-var editPane = {
-  edit(button_index) {
-    App.EDIT_MODE = true;
-    var data = App.UserData[button_index];
+  },
+  prepareForEdit()
+  {
+    var data = App.UserData[App.edit];
     $("#iResponse").val(data);
-    App.edit = button_index;
     $("#InputNewBtn").prop('disabled', true);
-    $("#iQuestion").text(DataEntryPane.Questions[button_index]);
-    App.showView("dataEntry");
+    $("#iQuestion").text(DataEntryPane.Questions[App.edit]);
   }
 }
+
 var PreviewPane = {
   refresh() {
     controls = ["#p1", "#p2", "#p3", "#p4", "#p5", "#p6", "#p7", "#p8", "#p9"];
     for (var i = 0; i < controls.length; i++)
       $(controls[i]).text(App.UserData[i]);
+  },
+  edit(button_index) {
+    App.EDIT_MODE = true;
+    App.edit = button_index;
+    DataEntryPane.prepareForEdit();
+    App.showView("dataEntry");
 
   }
 }
+
 var MainButtons = {
   "buttons": ["#b1", "#b2", "#b3", "#b4", "#b5", "#b6", "#b7", "#b8", "#b9", "#b10"],
 toggleButton( index , visible ){
@@ -161,3 +158,8 @@ toggleButton( index , visible ){
     DataEntryPane.setView(btnIndex);
   }
 }
+
+$(document).ready(function () {
+  MainButtons.toggleButton(App.State.CurrentStage,true);
+  PreviewPane.refresh();
+});
