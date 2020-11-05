@@ -1,15 +1,15 @@
 var App = {
   "State": {
-    "CurrentStage": 0
+    "CurrentStage": 7
   },
   "UserData": [
-    "",
-    [],
-    [],
-    [],
-    [],
-    "",
-    "",
+    "problem",
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    "gjjvhg",
+    "bvjkjkbb",
     "",
     ""
   ],
@@ -130,6 +130,13 @@ var DataEntryPane = {
   showChoices(){
     $("#iChoices").text(App.UserData[this.pivot][this.incr]);
   },
+  setDecisionPane(){
+    $("#iResponse").hide();
+    $("#SubmitResponse").prop('disabled',true);
+    for(var i = 0;i<App.UserData[this.pivot].length;i++){
+    $("#choiceList").append('<button class="choiceOption">'+ App.UserData[this.pivot][i]+'</button>');
+    }
+  },
   prepareForEdit()
   {
     var data = App.UserData[App.edit];
@@ -173,6 +180,10 @@ toggleButton( index , visible ){
   showDependentEntryPane(btnIndex){
     DataEntryPane.showNext();
     DataEntryPane.showChoices();
+    this.showDataEntryPane(btnIndex);
+  },
+  showDecisionPane(btnIndex){
+    DataEntryPane.setDecisionPane();
     this.showDataEntryPane(btnIndex);
   },
   showDataEntryPane(btnIndex){
