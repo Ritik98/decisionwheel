@@ -14,10 +14,10 @@
         <div id="buttonarea">
             <div id="buttons">
                 <button class="btn" id="b1" onclick="MainButtons.showDataEntryPane(0)" disabled>Problem</button>
-                <button class="btn" id="b2" onclick="MainButtons.collectresponse()" disabled>Choices</button>
-                <button class="btn" id="b3" onclick="MainButtons.collectresponse()" disabled>Consequences</button>
-                <button class="btn" id="b4" onclick="MainButtons.collectresponse()" disabled>Values</button>
-                <button class="btn" id="b5" onclick="MainButtons.collectresponse()" disabled>Feelings</button>
+                <button class="btn" id="b2" onclick="MainButtons.showChoicesEntryPane()" disabled>Choices</button>
+                <button class="btn" id="b3" onclick="MainButtons.showDependentEntryPane(2)" disabled>Consequences</button>
+                <button class="btn" id="b4" onclick="MainButtons.showDependentEntryPane(3)" disabled>Values</button>
+                <button class="btn" id="b5" onclick="MainButtons.showDependentEntryPane(4)" disabled>Feelings</button>
                 <button class="btn" id="b6" onclick="MainButtons.showDataEntryPane(5)" disabled>More Info</button>
                 <button class="btn" id="b7" onclick="MainButtons.showDataEntryPane(6)" disabled>Who can help ?</button>
                 <button class="btn" id="b8" onclick="MainButtons.collectresponse()" disabled>Decision</button>
@@ -28,7 +28,7 @@
         <div id="viewarea">
             <div id="userdataentrybox" style="display: none; text-align: center;">
                 <h3 id="iQuestion"></h3>
-                <div id="iContext"></div>
+                <div id="iChoices"></div>
                 <br>
                 <div id="iDecision" style="display: none;">
                     <h3>Select from the given Choices</h3>
@@ -36,14 +36,14 @@
                 <textarea id="iResponse" style="text-align: center;"></textarea>
                 <br>
                 <div style="text-align: center;">
-                    <button class="ibtn" type="button" id="InputNewBtn" onclick="DataEntryPane.addNew()" disabled> Add More </button>
+                    <button class="ibtn" type="button" id="AddMore" onclick="DataEntryPane.addNew()" disabled> Add More </button>
                     <button class="ibtn" type="button" id="InputRemoveBtn" onclick="RemoveCurrent()" disabled> Remove
                     </button>
                     <button class="ibtn" type="button" id="InputPreviousBtn" onclick="ShowPrevious()" disabled> Previous
                     </button>
-                    <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.showNext()" disabled>&nbsp; Next
+                    <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.inputNext()" disabled>&nbsp; Next
                         &nbsp;</button>
-                    <button class="ibtn" type="button" id="s4" onclick="DataEntryPane.SubmitInput()"> Submit </button>
+                    <button class="ibtn" type="button" id="SubmitResponse" onclick="DataEntryPane.SubmitInput()"> Submit </button>
                 </div>
             </div>
             <!-- -------------------------------------------------------------------------------------------- -->
