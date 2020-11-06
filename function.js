@@ -62,10 +62,10 @@ var TestSuite =
     App.State.CurrentStage = 9;
     App.UserData =   [
       "focusOnSubmit",
-      ["vhjv","hvjvbjh"],
-      ["vhjv","hvjvbjh"],
-      ["vhjv","hvjvbjh"],
-      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh","fjeer","ygfbchds"],
+      ["vhjv","hvjvbjh","fjeer","ygfbchds"],
+      ["vhjv","hvjvbjh","fjeer","ygfbchds"],
+      ["vhjv","hvjvbjh","fjeer","ygfbchds"],
       "gjjvhg",
       "bvjkjkbb",
       "decision",
@@ -99,6 +99,16 @@ var DataEntryPane = {
    *
    * when it is the last item, show submit, instead of add more
    */
+  
+  SubmitResponse(){
+    // var editId = ["#e1" , "#e2" , "#e3" , "#e4" , "e5" , "e6" , "e7" , "e8" , "e9"]
+    var editId = "#e" + (App.State.CurrentStage + 1);
+    MainButtons.enableNextButton();
+    App.showView("preview");
+    if( ! this.DependentList[App.State.CurrentStage] ){
+      $(editId).show();
+    }
+  },
   SubmitInput() {
     var response = $.trim($("#iResponse").val());
     if (response == "") {
@@ -216,6 +226,17 @@ var PreviewPane = {
     DataEntryPane.prepareForEdit();
     App.showView("dataEntry");
 
+  },
+  choice(action){
+    if( action == "forward" )
+    this.ChoicePosition++;
+    else {
+      this.ChoicePosition--;
+      if( this.ChoicePosition < 0 )
+        this.ChoicePosition = App.UserData[DataEntryPane.pivot].length - 1 ;
+    }
+    this.ChoicePosition = this.ChoicePosition % (App.UserData[DataEntryPane.pivot].length);
+    this.refresh();
   }
 }
 
@@ -247,11 +268,16 @@ toggleButton( index , visible ){
   showDataEntryPane(btnIndex){
     DataEntryPane.setView(btnIndex);
     App.showView("dataEntry");
+  },
+  enableNextButton(){
+    this.toggleButton(App.State.CurrentStage , false);
+    this.toggleButton(App.State.CurrentStage+1 , true);
   }
+  
 }
 
 $(document).ready(function () {
-  TestSuite.focusOnSubmit();
+  // TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage,true);
   PreviewPane.refresh();
 });
