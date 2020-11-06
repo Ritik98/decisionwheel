@@ -57,7 +57,21 @@ var TestSuite =
       ""
     ]
   },
-
+  focusOnSubmit() 
+  {
+    App.State.CurrentStage = 9;
+    App.UserData =   [
+      "focusOnSubmit",
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      "gjjvhg",
+      "bvjkjkbb",
+      "decision",
+      "ADecision"
+    ]
+  }
 
 }
 
@@ -75,7 +89,7 @@ var DataEntryPane = {
   ],
   "IsList": [false, true, false, false, false, false, false, false, false],
   "pivot": 1,
-  "dependentlist": [false, false, true, true, true, false, false, false, false],
+  "DependentList": [false, false, true, true, true, false, false, false, false],
   "incr": 0,
 
   /**
@@ -102,11 +116,11 @@ var DataEntryPane = {
 
     if (this.IsList[App.State.CurrentStage]) {
       this.addNew();
-    } else if (!(this.dependentlist[App.State.CurrentStage])) {
+    } else if (!(this.DependentList[App.State.CurrentStage])) {
       App.UserData[App.State.CurrentStage] = response;
       $("#iResponse").val("");
     }
-    if (this.dependentlist[App.State.CurrentStage]) {
+    if (this.DependentList[App.State.CurrentStage]) {
       App.UserData[App.State.CurrentStage].push(response);
       this.incr = 0;
       $("#iContext").text("");
@@ -121,7 +135,7 @@ var DataEntryPane = {
     App.showView("dataEntry");
     $("#iQuestion").text(this.Questions[App.State.CurrentStage]);
     $("#IewBtnputNn").prop('disabled', (!(this.IsList[App.State.CurrentStage])));
-    if (this.dependentlist[App.State.CurrentStage]) {
+    if (this.DependentList[App.State.CurrentStage]) {
       $("#InputNextBtn").prop('disabled', false);
       $("#s4").prop('disabled', true);
       $("#iContext").text(App.UserData[this.pivot][this.incr]);
@@ -184,10 +198,17 @@ var DataEntryPane = {
 }
 
 var PreviewPane = {
-  refresh() {
+  "ChoicePosition" : 0 ,
+   refresh() {
     controls = ["#p1", "#p2", "#p3", "#p4", "#p5", "#p6", "#p7", "#p8", "#p9"];
-    for (var i = 0; i < controls.length; i++)
-      $(controls[i]).text(App.UserData[i]);
+    for (var i = 0; i < controls.length; i++){
+      if ( DataEntryPane.IsList[i] || DataEntryPane.DependentList[i]){
+        $(controls[i]).text(App.UserData[i][this.ChoicePosition]);
+      }
+      else{
+        $(controls[i]).text(App.UserData[i]);
+      }
+    }
   },
   edit(button_index) {
     App.EDIT_MODE = true;
@@ -230,7 +251,7 @@ toggleButton( index , visible ){
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnDecision();
+  TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage,true);
   PreviewPane.refresh();
 });

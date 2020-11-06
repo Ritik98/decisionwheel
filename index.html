@@ -22,7 +22,7 @@
                 <button class="btn" id="b7" onclick="MainButtons.showDataEntryPane(6)" disabled>Who can help ?</button>
                 <button class="btn" id="b8" onclick="MainButtons.showDecisionPane(7)" disabled>Decision</button>
                 <button class="btn" id="b9" onclick="MainButtons.showDataEntryPane(8)" disabled>Assess Decision</button>
-                <button class="btn" id="b10" disabled>Submit</button>
+                <button class="btn" id="b10" onclick="" disabled>Submit</button>
             </div>
         </div>
         <div id="viewarea">
@@ -55,22 +55,23 @@
                     <h3>PROBLEM :</h3>
                     <p class="content" id="p1">Problem Of the USER.</p>
                 </div>
-                <div class="out">
-                    <button class="editbutton"  id="e2" onclick="edit_response(this)">edit</button>
+                <!-- <div class="out">
                     <div id="z" class="out" style="display: inline;">
                         <button id="generate" onclick="dropchoices()" style="margin-right: 15px;" disabled>
                             <h3>CHOICES:</h3>
                         </button>
                         <!-- <select name="choicelist" id="change_chart">
                         </select> -->
-                    </div>
+                    <!-- </div>
                     <button class="out" style="display: inline;" id="a" onclick="selectchoice()"> CONFIRM </button>
-                </div>
-                <div class="out">
+                </div> -->
+                <div class="out"> 
 
                     <h3>CHOICE :</h3>
+                    <button class="editbutton"  id="e2" onclick="edit_response(this)">edit</button>
+                    <button id="backward"><</button>
                     <P class="content" id="p2">CHOICE </P>
-
+                    <button id="forward">></button>
                 </div>
                 <div class="out">
                     <h3>CONSEQUENCES :</h3>
@@ -101,7 +102,7 @@
                 </div>
                 <div class="out">
                     <button class="editbutton"  id="e9" onclick="PreviewPane.edit(8)">edit</button>
-                    <h3>ASSES DECISION :</h3>
+                    <h3>ASSESS DECISION :</h3>
                     <P class="content" id="p9">ASSESS your Decision</P>
                 </div>
             </div>
