@@ -1,15 +1,15 @@
 var App = {
   "State": {
-    "CurrentStage": 7
+    "CurrentStage": 0
   },
   "UserData": [
-    "problem",
-    ["vhjv","hvjvbjh"],
-    ["vhjv","hvjvbjh"],
-    ["vhjv","hvjvbjh"],
-    ["vhjv","hvjvbjh"],
-    "gjjvhg",
-    "bvjkjkbb",
+    "",
+    [],
+    [],
+    [],
+    [],
+    "",
+    "",
     "",
     ""
   ],
@@ -22,6 +22,43 @@ var App = {
     this.last_visible_view =  viewname ;
     $(viewmap[this.last_visible_view]).show();
   }
+}
+
+var TestSuite = 
+{
+
+  focusOnDecision() 
+  {
+    App.State.CurrentStage = 7;
+    App.UserData =   [
+      "focusOnDecision",
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      "gjjvhg",
+      "bvjkjkbb",
+      "",
+      ""
+    ]
+  },
+  focusOnProblem() 
+  {
+    App.State.CurrentStage = 0;
+    App.UserData =   [
+      "focusOnProblem",
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      ["vhjv","hvjvbjh"],
+      "gjjvhg",
+      "bvjkjkbb",
+      "",
+      ""
+    ]
+  },
+
+
 }
 
 var DataEntryPane = {
@@ -193,6 +230,7 @@ toggleButton( index , visible ){
 }
 
 $(document).ready(function () {
+  //TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage,true);
   PreviewPane.refresh();
 });
