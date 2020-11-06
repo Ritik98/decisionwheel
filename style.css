@@ -140,7 +140,11 @@ h3{
     margin-bottom: 5px;
 }
 
-#iContext{
+.choice{
+    text-align: center;
+}
+
+#iChoices{
     background-color: rgba(194, 52, 52, 0.733);
     border-radius: 5px 60px;
     font-size: 2rem;
@@ -165,7 +169,7 @@ h3{
     max-width: 750px;
     min-width:750px; */
 }
-#InputNewBtn{
+#AddMore{
   background-color: #bb3c3cdc; /* Green */
   border: 2px solid rgb(116, 1, 1);
   color: white;
@@ -177,13 +181,13 @@ h3{
   cursor: pointer;
   border-radius: 6px;
 }
-#InputNewBtn:hover{
+#AddMore:hover{
     background-color: rgba(194, 3, 3, 0.973);
     color: rgb(255, 236, 127);
     transition-duration: 0.3s;
 
 }
-#InputNewBtn:disabled{
+#AddMore:disabled{
     display: none;
 }
 #InputRemoveBtn{
@@ -248,7 +252,7 @@ h3{
 #InputNextBtn:disabled{
     display: none;
 }
-#s4{
+#SubmitResponse{
     background-color: #bb3c3cdc; /* Green */
     border: 2px solid rgb(116, 1, 1);
     color: white;
@@ -260,12 +264,12 @@ h3{
     cursor: pointer;
     border-radius: 6px;
 }
-#s4:hover{
+#SubmitResponse:hover{
     background-color: rgba(194, 3, 3, 0.973);
     color: rgb(255, 236, 127);
     transition-duration: 0.3s;
 }
-#s4:disabled{
+#SubmitResponse:disabled{
     display: none;
 }
 

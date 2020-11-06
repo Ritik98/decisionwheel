@@ -1,15 +1,15 @@
 var App = {
   "State": {
-    "CurrentStage": 0
+    "CurrentStage": 7
   },
   "UserData": [
-    "",
-    [],
-    [],
-    [],
-    [],
-    "",
-    "",
+    "problem",
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    ["vhjv","hvjvbjh"],
+    "gjjvhg",
+    "bvjkjkbb",
     "",
     ""
   ],
@@ -83,14 +83,14 @@ var DataEntryPane = {
   show() {
     App.showView("dataEntry");
     $("#iQuestion").text(this.Questions[App.State.CurrentStage]);
-    $("#InputNewBtn").prop('disabled', (!(this.IsList[App.State.CurrentStage])));
+    $("#IewBtnputNn").prop('disabled', (!(this.IsList[App.State.CurrentStage])));
     if (this.dependentlist[App.State.CurrentStage]) {
       $("#InputNextBtn").prop('disabled', false);
       $("#s4").prop('disabled', true);
       $("#iContext").text(App.UserData[this.pivot][this.incr]);
     }
   },
-  showNext() {
+  inputNext() {
     var response = $.trim($("#iResponse").val());
     if (response == "") {
       alert("Give some response");
@@ -112,11 +112,30 @@ var DataEntryPane = {
       alert("Give some response");
       return;
     }
+    $("#SubmitResponse").prop('disabled',false);
     App.UserData[App.State.CurrentStage].push(response);
     $("#iResponse").val("");
   },
   setView(btnIndex){
     $("#iQuestion").text(this.Questions[btnIndex]);
+  },
+  showAdd(){
+  $("#AddMore").prop('disabled',false);
+  $("#SubmitResponse").prop('disabled',true);
+  },
+  showNext(){
+    $("#InputNextBtn").prop('disabled',false);
+    $("#SubmitResponse").prop('disabled',true);
+  },
+  showChoices(){
+    $("#iChoices").text(App.UserData[this.pivot][this.incr]);
+  },
+  setDecisionPane(){
+    $("#iResponse").hide();
+    $("#SubmitResponse").prop('disabled',true);
+    for(var i = 0;i<App.UserData[this.pivot].length;i++){
+    $("#choiceList").append('<button class="choiceOption">'+ App.UserData[this.pivot][i]+'</button>');
+    }
   },
   prepareForEdit()
   {
@@ -153,9 +172,23 @@ toggleButton( index , visible ){
     // hide preview pare
     DataEntryPane.show();
   },
+  showChoicesEntryPane(){
+    DataEntryPane.showAdd();
+    this.showDataEntryPane(DataEntryPane.pivot);
+
+  },
+  showDependentEntryPane(btnIndex){
+    DataEntryPane.showNext();
+    DataEntryPane.showChoices();
+    this.showDataEntryPane(btnIndex);
+  },
+  showDecisionPane(btnIndex){
+    DataEntryPane.setDecisionPane();
+    this.showDataEntryPane(btnIndex);
+  },
   showDataEntryPane(btnIndex){
-    App.showView("dataEntry");
     DataEntryPane.setView(btnIndex);
+    App.showView("dataEntry");
   }
 }
 
