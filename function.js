@@ -99,8 +99,19 @@ var DataEntryPane = {
    *
    * when it is the last item, show submit, instead of add more
    */
-  
+  getResponse(){
+    var response = $.trim($("#iResponse").val());
+    return response;
+    
+  },
+
   SubmitResponse(){
+    var response = this.getResponse();
+      if (response == "" && App.State.CurrentStage != 7) {
+        alert("Give some response");
+        return;
+      }
+    
     // var editId = ["#e1" , "#e2" , "#e3" , "#e4" , "e5" , "e6" , "e7" , "e8" , "e9"]
     var editId = "#e" + (App.State.CurrentStage + 1);
     MainButtons.enableNextButton();
@@ -108,6 +119,14 @@ var DataEntryPane = {
     if( ! this.DependentList[App.State.CurrentStage] ){
       $(editId).show();
     }
+    if (this.IsList[App.State.CurrentStage]){;}
+    else if(this.DependentList[App.State.CurrentStage]){;}
+    else if(App.State.CurrentStage == 7){;}
+    else{
+      App.UserData[App.State.CurrentStage] = response;
+      $("#iResponse").val("");
+    }
+    PreviewPane.refresh();
   },
   SubmitInput() {
     var response = $.trim($("#iResponse").val());
@@ -151,7 +170,7 @@ var DataEntryPane = {
       $("#iContext").text(App.UserData[this.pivot][this.incr]);
     }
   },
-  inputNext() {
+  addChoices() {
     var response = $.trim($("#iResponse").val());
     if (response == "") {
       alert("Give some response");
