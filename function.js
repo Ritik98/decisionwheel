@@ -99,8 +99,19 @@ var DataEntryPane = {
    *
    * when it is the last item, show submit, instead of add more
    */
-  
+  getResponse(){
+    var response = $.trim($("#iResponse").val());
+    return response;
+    
+  },
+
   SubmitResponse(){
+    var response = this.getResponse();
+      if (response == "" && App.State.CurrentStage != 7) {
+        alert("Give some response");
+        return;
+      }
+     
     // var editId = ["#e1" , "#e2" , "#e3" , "#e4" , "e5" , "e6" , "e7" , "e8" , "e9"]
     var editId = "#e" + (App.State.CurrentStage + 1);
     MainButtons.enableNextButton();
@@ -108,6 +119,25 @@ var DataEntryPane = {
     if( ! this.DependentList[App.State.CurrentStage] ){
       $(editId).show();
     }
+    if (this.IsList[App.State.CurrentStage]){
+      this.addChoices();
+      $("#AddMore").hide();
+    }
+    else if(this.DependentList[App.State.CurrentStage]){
+      this.addNext();
+      $("#SubmitResponse").prop('disabled', true);
+      $("#iChoices").text("");
+      this.incr=0;
+    
+    }
+    else if(App.State.CurrentStage == 7){;}
+    else{
+      App.UserData[App.State.CurrentStage] = response;
+      $("#iResponse").val("");
+      
+    }
+    PreviewPane.refresh();
+    App.State.CurrentStage++;
   },
   SubmitInput() {
     var response = $.trim($("#iResponse").val());
@@ -125,7 +155,7 @@ var DataEntryPane = {
     }
 
     if (this.IsList[App.State.CurrentStage]) {
-      this.addNew();
+      this.addChoices();
     } else if (!(this.DependentList[App.State.CurrentStage])) {
       App.UserData[App.State.CurrentStage] = response;
       $("#iResponse").val("");
@@ -133,7 +163,7 @@ var DataEntryPane = {
     if (this.DependentList[App.State.CurrentStage]) {
       App.UserData[App.State.CurrentStage].push(response);
       this.incr = 0;
-      $("#iContext").text("");
+      $("#iChoices").text("");
       $("#iResponse").val("");
     }
     PreviewPane.refresh();
@@ -147,12 +177,12 @@ var DataEntryPane = {
     $("#IewBtnputNn").prop('disabled', (!(this.IsList[App.State.CurrentStage])));
     if (this.DependentList[App.State.CurrentStage]) {
       $("#InputNextBtn").prop('disabled', false);
-      $("#s4").prop('disabled', true);
+      $("#SubmitResponse").prop('disabled', true);
       $("#iContext").text(App.UserData[this.pivot][this.incr]);
     }
   },
-  inputNext() {
-    var response = $.trim($("#iResponse").val());
+  addNext() {
+    var response = this.getResponse();
     if (response == "") {
       alert("Give some response");
       return;
@@ -160,15 +190,15 @@ var DataEntryPane = {
     this.incr++;
     if (App.UserData[this.pivot].length - 1 == this.incr) {
       $("#InputNextBtn").prop('disabled', true);
-      $("#s4").prop('disabled', false);
+      $("#SubmitResponse").prop('disabled', false);
     }
-    $("#iContext").text(App.UserData[this.pivot][this.incr]);
+    $("#iChoices").text(App.UserData[this.pivot][this.incr]);
     App.UserData[App.State.CurrentStage].push(response);
     $("#iResponse").val("");
 
   },
-  addNew() {
-    var response = $.trim($("#iResponse").val());
+  addChoices() {
+    var response = this.getResponse();
     if (response == "") {
       alert("Give some response");
       return;
