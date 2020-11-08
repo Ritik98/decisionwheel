@@ -31,12 +31,12 @@ var TestSuite =
     App.State.CurrentStage = 7;
     App.UserData = [
       "focusOnDecision",
-      ["vhjv", "hvjvbjh"],
-      ["vhjv", "hvjvbjh"],
-      ["vhjv", "hvjvbjh"],
-      ["vhjv", "hvjvbjh"],
-      "gjjvhg",
-      "bvjkjkbb",
+      ["choice1","choice2","choice3"],
+      ["con1","con2","con3"],
+      ["val1","val2","val3"],
+      ["feel1","feel2","feel3"],
+      "Additionalinfo",
+      "Whocanhelp",
       "",
       ""
     ]
@@ -117,13 +117,6 @@ var DataEntryPane = {
   "DependentList": [false, false, true, true, true, false, false, false, false],
   "incr": 0,
 
-  /**
-   * If this is a list type
-   * and this is not a pivot
-   * find out how many items should be there in the list
-   *
-   * when it is the last item, show submit, instead of add more
-   */
   getResponse() {
     var response = $.trim($("#iResponse").val());
     if (response == "" && App.State.CurrentStage != 7) {
@@ -133,7 +126,17 @@ var DataEntryPane = {
     return response;
 
   },
-
+  decisionChoice(choice){
+    App.UserData[App.State.CurrentStage]=App.UserData[this.pivot][choice];
+    App.showView("preview");
+    PreviewPane.refresh();
+    PreviewPane.enableEdit();
+    MainButtons.toggleButton(++App.State.CurrentStage, true);
+    $("#iResponse").show();
+    $("#SubmitResponse").prop('disabled', false);
+    $("#choiceList").text("");
+    
+  },
   SubmitResponse() {
     var response = this.getResponse(); 
     if (response != false) {
@@ -164,48 +167,7 @@ var DataEntryPane = {
       $("#iResponse").val("");
     }
   },
-  SubmitInput() {
-    var response = $.trim($("#iResponse").val());
-    if (response == "") {
-      alert("Give some response");
-      return;
-    }
-    if (App.EDIT_MODE) {
-      App.UserData[App.edit] = response;
-      App.EDIT_MODE = false;
-      $("#iResponse").val("");
-      PreviewPane.refresh();
-      App.showView("preview");
-      return;
-    }
-
-    if (this.IsList[App.State.CurrentStage]) {
-      this.addChoices();
-    } else if (!(this.DependentList[App.State.CurrentStage])) {
-      App.UserData[App.State.CurrentStage] = response;
-      $("#iResponse").val("");
-    }
-    if (this.DependentList[App.State.CurrentStage]) {
-      App.UserData[App.State.CurrentStage].push(response);
-      this.incr = 0;
-      $("#iChoices").text("");
-      $("#iResponse").val("");
-    }
-    PreviewPane.refresh();
-    App.showView("preview");
-    MainButtons.toggleButton(++App.State.CurrentStage, true);
-
-  },
-  show() {
-    App.showView("dataEntry");
-    $("#iQuestion").text(this.Questions[App.State.CurrentStage]);
-    $("#IewBtnputNn").prop('disabled', (!(this.IsList[App.State.CurrentStage])));
-    if (this.DependentList[App.State.CurrentStage]) {
-      $("#InputNextBtn").prop('disabled', false);
-      $("#SubmitResponse").prop('disabled', true);
-      $("#iContext").text(App.UserData[this.pivot][this.incr]);
-    }
-  },
+  
   nextChoice() {
     var response = this.getResponse();
     if (response != false) {
@@ -253,7 +215,7 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceList").append('<button class="choiceOption">' + App.UserData[this.pivot][i] + '</button>');
+      $("#choiceList").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice('+i+')">' + App.UserData[this.pivot][i] + '</button>');
     }
   },
   prepareForEdit() {
@@ -308,12 +270,6 @@ var MainButtons = {
   toggleButton(index, visible) {
     $(this.buttons[index]).prop('disabled', (!visible));
   },
-  collectresponse() {
-    this.toggleButton(App.State.CurrentStage, false);
-    // show edit pare
-    // hide preview pare
-    DataEntryPane.show();
-  },
   showChoicesEntryPane() {
     DataEntryPane.showAdd();
     this.showDataEntryPane(DataEntryPane.pivot);
@@ -340,7 +296,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnAddInfo();
+  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
