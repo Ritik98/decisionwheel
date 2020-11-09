@@ -140,6 +140,14 @@ var DataEntryPane = {
   SubmitResponse() {
     var response = this.getResponse(); 
     if (response != false) {
+      if (App.EDIT_MODE) {
+        App.UserData[App.edit] = response;
+        App.EDIT_MODE = false;
+        $("#iResponse").val("");
+        PreviewPane.refresh();
+        App.showView("preview");
+        return;
+      }
       PreviewPane.enableEdit();
       MainButtons.enableNextButton();
       App.showView("preview");
