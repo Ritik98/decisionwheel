@@ -31,10 +31,10 @@ var TestSuite =
     App.State.CurrentStage = 7;
     App.UserData = [
       "focusOnDecision",
-      ["choice1","choice2","choice3"],
-      ["con1","con2","con3"],
-      ["val1","val2","val3"],
-      ["feel1","feel2","feel3"],
+      ["choice1", "choice2", "choice3"],
+      ["con1", "con2", "con3"],
+      ["val1", "val2", "val3"],
+      ["feel1", "feel2", "feel3"],
       "Additionalinfo",
       "Whocanhelp",
       "",
@@ -59,7 +59,7 @@ var TestSuite =
     App.State.CurrentStage = 2;
     App.UserData = [
       "focusOnDependentChoice",
-      ["choice1","choice2","choice3"],
+      ["choice1", "choice2", "choice3"],
       [],
       [],
       [],
@@ -73,10 +73,10 @@ var TestSuite =
     App.State.CurrentStage = 5;
     App.UserData = [
       "focusOnAddInfo",
-      ["choice1","choice2","choice3"],
-      ["con1","con2","con3"],
-      ["val1","val2","val3"],
-      ["feel1","feel2","feel3"],
+      ["choice1", "choice2", "choice3"],
+      ["con1", "con2", "con3"],
+      ["val1", "val2", "val3"],
+      ["feel1", "feel2", "feel3"],
       "",
       "",
       "",
@@ -126,21 +126,38 @@ var DataEntryPane = {
     return response;
 
   },
-  decisionChoice(choice){
-    App.UserData[App.State.CurrentStage]=App.UserData[this.pivot][choice];
+  decisionChoice(choice) {
+    if (App.EDIT_MODE) {
+      App.UserData[App.edit] = App.UserData[this.pivot][choice];
+    }
+    else {
+      App.UserData[App.State.CurrentStage] = App.UserData[this.pivot][choice];
+      MainButtons.toggleButton(++App.State.CurrentStage, true);
+    }
     App.showView("preview");
     PreviewPane.refresh();
-    PreviewPane.enableEdit();
-    MainButtons.toggleButton(++App.State.CurrentStage, true);
     $("#iResponse").show();
     $("#SubmitResponse").prop('disabled', false);
     $("#choiceList").text("");
-    
+
   },
   SubmitResponse() {
-    var response = this.getResponse(); 
+    var response = this.getResponse();
     if (response != false) {
-      PreviewPane.enableEdit();
+      if (App.EDIT_MODE) {
+        if (this.IsList[App.edit] || this.DependentList[App.edit]) {
+        App.UserData[App.edit][PreviewPane.ChoicePosition] = response;
+        $("#iChoices").text("");
+        }
+        else{
+          App.UserData[App.edit] = response;
+        }
+        App.EDIT_MODE = false;
+        $("#iResponse").val("");
+        PreviewPane.refresh();
+        App.showView("preview");
+        return;
+      }
       MainButtons.enableNextButton();
       App.showView("preview");
       this.checkStageAndSetView(response);
@@ -150,7 +167,7 @@ var DataEntryPane = {
 
     // var editId = ["#e1" , "#e2" , "#e3" , "#e4" , "e5" , "e6" , "e7" , "e8" , "e9"]
   },
-  checkStageAndSetView(response){
+  checkStageAndSetView(response) {
     if (this.IsList[App.State.CurrentStage]) {//Choices Condition
       this.addChoices();
       $("#AddMore").hide();
@@ -167,7 +184,7 @@ var DataEntryPane = {
       $("#iResponse").val("");
     }
   },
-  
+
   nextChoice() {
     var response = this.getResponse();
     if (response != false) {
@@ -191,7 +208,7 @@ var DataEntryPane = {
   },
   addChoices() {
     var response = this.getResponse();
-    if (response != false){
+    if (response != false) {
       $("#SubmitResponse").prop('disabled', false);
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
@@ -215,11 +232,24 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceList").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice('+i+')">' + App.UserData[this.pivot][i] + '</button>');
+      $("#choiceList").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
     }
   },
   prepareForEdit() {
-    var data = App.UserData[App.edit];
+    if (this.IsList[App.edit] || this.DependentList[App.edit]) {
+      var data = App.UserData[App.edit][PreviewPane.ChoicePosition];
+      if(this.DependentList[App.edit]){
+        $("#iChoices").text(App.UserData[this.pivot][PreviewPane.ChoicePosition]);
+      }
+    }
+    else if ( App.edit == 7 ){
+      DataEntryPane.setDecisionPane();
+      $("#iQuestion").text(DataEntryPane.Questions[App.edit]);
+      return ;
+    }
+    else {
+      var data = App.UserData[App.edit];
+    }
     $("#iResponse").val(data);
     $("#InputNewBtn").prop('disabled', true);
     $("#iQuestion").text(DataEntryPane.Questions[App.edit]);
@@ -237,6 +267,7 @@ var PreviewPane = {
       else {
         $(controls[i]).text(App.UserData[i]);
       }
+      this.enableEdit();
     }
   },
   edit(button_index) {
@@ -257,11 +288,16 @@ var PreviewPane = {
     this.ChoicePosition = this.ChoicePosition % (App.UserData[DataEntryPane.pivot].length);
     this.refresh();
   },
-  enableEdit(){
+  enableEdit() {
     var editId = "#e" + (App.State.CurrentStage + 1);
-      if (!DataEntryPane.DependentList[App.State.CurrentStage]) {
+    for (var i = 1; i < 10; i++) {
+      if (App.UserData[i - 1].length > 0) {
+        editId = "#e" + i;
         $(editId).show();
       }
+      else
+        break;
+    }
   }
 }
 
@@ -273,7 +309,6 @@ var MainButtons = {
   showChoicesEntryPane() {
     DataEntryPane.showAdd();
     this.showDataEntryPane(DataEntryPane.pivot);
-
   },
   showDependentEntryPane(btnIndex) {
     DataEntryPane.showNext();
@@ -291,6 +326,12 @@ var MainButtons = {
   },
   enableNextButton() {
     this.toggleButton(App.State.CurrentStage + 1, true);
+  },
+  showReport(){
+    $("#viewarea").hide();
+    $("#buttonarea").hide();
+    $("#finalReport").show();
+
   }
 
 }
