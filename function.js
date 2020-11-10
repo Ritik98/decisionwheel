@@ -326,12 +326,18 @@ var MainButtons = {
   },
   enableNextButton() {
     this.toggleButton(App.State.CurrentStage + 1, true);
+  },
+  showReport(){
+    $("#viewarea").hide();
+    $("#buttonarea").hide();
+    $("#finalReport").show();
+
   }
 
 }
 
 $(document).ready(function () {
-  // TestSuite.focusOnDecision();
+  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
