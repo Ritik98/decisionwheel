@@ -37,12 +37,12 @@
                 <div id="choiceList"></div>
                 <br>
                 <div style="text-align: center;">
-                    <button class="ibtn" type="button" id="AddMore" onclick="DataEntryPane.addNew()" disabled> Add More </button>
+                    <button class="ibtn" type="button" id="AddMore" onclick="DataEntryPane.addChoices()" disabled> Add More </button>
                     <button class="ibtn" type="button" id="InputRemoveBtn" onclick="RemoveCurrent()" disabled> Remove
                     </button>
                     <button class="ibtn" type="button" id="InputPreviousBtn" onclick="ShowPrevious()" disabled> Previous
                     </button>
-                    <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.inputNext()" disabled>&nbsp; Next
+                    <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.nextChoice()" disabled>&nbsp; Next
                         &nbsp;</button>
                     <button class="ibtn" type="button" id="SubmitResponse" onclick="DataEntryPane.SubmitResponse()"> Submit </button>
                 </div>
@@ -65,7 +65,7 @@
                     <!-- </div>
                     <button class="out" style="display: inline;" id="a" onclick="selectchoice()"> CONFIRM </button>
                 </div> -->
-                <div class="out"> 
+                <div class="out">
 
                     <h3>CHOICE :</h3>
                     <button class="editbutton"  id="e2" onclick="edit_response(this)" hidden>edit </button>
@@ -75,14 +75,17 @@
                 </div>
                 <div class="out">
                     <h3>CONSEQUENCES :</h3>
+                    <button class="editbutton"  id="e3" onclick="edit_response(this)" hidden>edit </button>
                     <P class="content" id="p3">CONSEQUENCES regarding Choice</P>
                 </div>
                 <div class="out">
                     <h3>VALUES :</h3>
+                    <button class="editbutton"  id="e4" onclick="edit_response(this)" hidden>edit </button>
                     <P class="content" id="p4">VALUES regarding choice </P>
                 </div>
                 <div class="out">
                     <h3>FEELING :</h3>
+                    <button class="editbutton"  id="e5" onclick="edit_response(this)" hidden>edit </button>
                     <P class="content" id="p5">FEELING regarding choice</P>
                 </div>
                 <div class="out">
