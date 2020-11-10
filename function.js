@@ -130,15 +130,14 @@ var DataEntryPane = {
     App.UserData[App.State.CurrentStage]=App.UserData[this.pivot][choice];
     App.showView("preview");
     PreviewPane.refresh();
-    PreviewPane.enableEdit();
     MainButtons.toggleButton(++App.State.CurrentStage, true);
     $("#iResponse").show();
     $("#SubmitResponse").prop('disabled', false);
     $("#choiceList").text("");
-    
+
   },
   SubmitResponse() {
-    var response = this.getResponse(); 
+    var response = this.getResponse();
     if (response != false) {
       if (App.EDIT_MODE) {
         App.UserData[App.edit] = response;
@@ -148,7 +147,6 @@ var DataEntryPane = {
         App.showView("preview");
         return;
       }
-      PreviewPane.enableEdit();
       MainButtons.enableNextButton();
       App.showView("preview");
       this.checkStageAndSetView(response);
@@ -175,7 +173,7 @@ var DataEntryPane = {
       $("#iResponse").val("");
     }
   },
-  
+
   nextChoice() {
     var response = this.getResponse();
     if (response != false) {
@@ -245,6 +243,7 @@ var PreviewPane = {
       else {
         $(controls[i]).text(App.UserData[i]);
       }
+      this.enableEdit();
     }
   },
   edit(button_index) {
@@ -265,13 +264,20 @@ var PreviewPane = {
     this.ChoicePosition = this.ChoicePosition % (App.UserData[DataEntryPane.pivot].length);
     this.refresh();
   },
-  enableEdit(){
-    var editId = "#e" + (App.State.CurrentStage + 1);
-      if (!DataEntryPane.DependentList[App.State.CurrentStage]) {
-        $(editId).show();
+  enableEdit() {
+      var editId = "#e" + (App.State.CurrentStage + 1);
+      for (var i = 1; i < 10; i++)
+      {
+        if (App.UserData[i - 1].length >0)
+        {
+          editId = "#e" + i;
+          $(editId).show();
+        }
+        else
+        break;
       }
   }
-}
+  }
 
 var MainButtons = {
   "buttons": ["#b1", "#b2", "#b3", "#b4", "#b5", "#b6", "#b7", "#b8", "#b9", "#b10"],
@@ -281,7 +287,6 @@ var MainButtons = {
   showChoicesEntryPane() {
     DataEntryPane.showAdd();
     this.showDataEntryPane(DataEntryPane.pivot);
-
   },
   showDependentEntryPane(btnIndex) {
     DataEntryPane.showNext();
