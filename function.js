@@ -331,13 +331,25 @@ var MainButtons = {
     $("#viewarea").hide();
     $("#buttonarea").hide();
     $("#finalReport").show();
-
+    $("#rProblem").text(App.UserData[0]);
+    var classChoice;
+    for(var i=0;i<App.UserData[1].length;i++) {
+      if(App.UserData[1][i]==App.UserData[7])
+      classChoice = "selected";
+      else
+      classChoice ="notselected";
+      $("#rChoices").append('<tr class = "'+ classChoice +'"><td>' + App.UserData[1][i] +'</td><td>'+App.UserData[2][i]+'</td><td>'+App.UserData[3][i]+'</td><td>'+App.UserData[4][i]+'</td></tr>');
+    }
+    $("rMoreInfo").text(App.UserData[5]);
+    $("rHelp").text(App.UserData[6]);
+    $("rAssess").text(App.UserData[8]);
   }
 
 }
 
 $(document).ready(function () {
-  TestSuite.focusOnDecision();
+ // MainButtons.showReport();
+  TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
