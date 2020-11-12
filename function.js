@@ -87,13 +87,13 @@ var TestSuite =
     App.State.CurrentStage = 9;
     App.UserData = [
       "focusOnSubmit",
-      ["vhjv", "hvjvbjh", "fjeer", "ygfbchds"],
-      ["vhjv", "hvjvbjh", "fjeer", "ygfbchds"],
-      ["vhjv", "hvjvbjh", "fjeer", "ygfbchds"],
-      ["vhjv", "hvjvbjh", "fjeer", "ygfbchds"],
+      ["choice1", "choice2", "choice3"],
+      ["con1", "con2", "con3"],
+      ["val1", "val2", "val3"],
+      ["feel1", "feel2", "feel3"],
       "gjjvhg",
       "bvjkjkbb",
-      "decision",
+      "choice2",
       "ADecision"
     ]
   }
@@ -365,7 +365,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-    // TestSuite.focusOnChoice();
+    TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
