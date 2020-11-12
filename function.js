@@ -196,6 +196,7 @@ var DataEntryPane = {
       this.showChoices();
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
+      $("#iResponse").focus();
       /**
        * increment
        * checkcondn
@@ -212,6 +213,7 @@ var DataEntryPane = {
       $("#SubmitResponse").prop('disabled', false);
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
+      $("#iResponse").focus();
     }
   },
   setView(btnIndex) {
@@ -323,6 +325,7 @@ var MainButtons = {
     DataEntryPane.setView(btnIndex);
     App.showView("dataEntry");
     this.toggleButton(App.State.CurrentStage, false);
+    $("#iResponse").focus();
   },
   enableNextButton() {
     this.toggleButton(App.State.CurrentStage + 1, true);
@@ -349,7 +352,7 @@ var MainButtons = {
 
 $(document).ready(function () {
  // MainButtons.showReport();
-  TestSuite.focusOnSubmit();
+  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
