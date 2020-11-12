@@ -116,11 +116,13 @@ var DataEntryPane = {
   "pivot": 1,
   "DependentList": [false, false, true, true, true, false, false, false, false],
   "incr": 0,
+  "blankChoice" : 0,
 
   getResponse() {
     var response = $.trim($("#iResponse").val());
     if (response == "" && App.State.CurrentStage != 7) {
       alert("Give some response");
+      $("#iResponse").focus();
       return false;
     }
     return response;
@@ -142,6 +144,16 @@ var DataEntryPane = {
 
   },
   SubmitResponse() {
+    var tempResponse = $.trim($("#iResponse").val());
+    if ( this.blankChoice > 1 && tempResponse.length == 0 ){
+      MainButtons.enableNextButton();
+      App.showView("preview");
+      $("#AddMore").hide();
+      PreviewPane.refresh();
+      App.State.CurrentStage++;
+      this.blankChoice = 0 ;
+      return ;
+    }
     var response = this.getResponse();
     if (response != false) {
       if (App.EDIT_MODE) {
@@ -171,6 +183,7 @@ var DataEntryPane = {
     if (this.IsList[App.State.CurrentStage]) {//Choices Condition
       this.addChoices();
       $("#AddMore").hide();
+      this.blankChoice = 0 ;
     }
     else if (this.DependentList[App.State.CurrentStage]) {
       this.nextChoice();
@@ -214,6 +227,7 @@ var DataEntryPane = {
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
       $("#iResponse").focus();
+      this.blankChoice++ ;
     }
   },
   setView(btnIndex) {
@@ -351,8 +365,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
- // MainButtons.showReport();
-  TestSuite.focusOnDecision();
+    // TestSuite.focusOnChoice();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });

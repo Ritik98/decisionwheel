@@ -28,12 +28,16 @@ th,td {
 #logo {
     height: 60px;
     vertical-align: sub;
+    float: left;
+    margin-left: 20px;
+
 }
+
 @media only screen and (min-width: 50em)
 /* ---for pc and dekstop ---*/
 {
 Body{
-    background-color: bisque;
+    margin: 0px;
 }
 /*-------------------------------------------------------------------------------------- */
 #headerarea{
@@ -48,20 +52,18 @@ Body{
     margin-bottom: 9px;
 }
 #parentdiv{
-    background-color: #81ee85e7;
+    background-color: #ccc;
     height: 100vh;
     border-radius: 5px;
 }
 #buttonarea{
-    width: 21%;
+    width: 24%;
     height:87%;
     float: left;
     background-color: aliceblue;
     text-align: center;
-    margin: 6px;
     box-sizing: border-box;
     border-radius: 6px;
-    margin-left: 10px;
 }
 #viewarea{
     float: right;
@@ -70,9 +72,7 @@ Body{
     max-height: 90%;
     background-color: rgba(230, 125, 125, 0.842);
     text-align: center;
-    margin: 6px;
     border-radius: 6px;
-    margin-right: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -136,6 +136,7 @@ Body{
     background-color: rgba(248, 247, 244, 0.849);
     margin: 9px;
     border-radius: 4px;
+    text-align: left;
 }
 h3{
     font-size: 1.3rem;
