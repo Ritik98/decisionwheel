@@ -196,6 +196,7 @@ var DataEntryPane = {
       this.showChoices();
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
+      $("#iResponse").focus();
       /**
        * increment
        * checkcondn
@@ -212,6 +213,7 @@ var DataEntryPane = {
       $("#SubmitResponse").prop('disabled', false);
       App.UserData[App.State.CurrentStage].push(response);
       $("#iResponse").val("");
+      $("#iResponse").focus();
     }
   },
   setView(btnIndex) {
@@ -323,6 +325,7 @@ var MainButtons = {
     DataEntryPane.setView(btnIndex);
     App.showView("dataEntry");
     this.toggleButton(App.State.CurrentStage, false);
+    $("#iResponse").focus();
   },
   enableNextButton() {
     this.toggleButton(App.State.CurrentStage + 1, true);
@@ -331,12 +334,24 @@ var MainButtons = {
     $("#viewarea").hide();
     $("#buttonarea").hide();
     $("#finalReport").show();
-
+    $("#rProblem").text(App.UserData[0]);
+    var classChoice;
+    for(var i=0;i<App.UserData[1].length;i++) {
+      if(App.UserData[1][i]==App.UserData[7])
+      classChoice = "selected";
+      else
+      classChoice ="notselected";
+      $("#rChoices").append('<tr class = "'+ classChoice +'"><td>' + App.UserData[1][i] +'</td><td>'+App.UserData[2][i]+'</td><td>'+App.UserData[3][i]+'</td><td>'+App.UserData[4][i]+'</td></tr>');
+    }
+    $("rMoreInfo").text(App.UserData[5]);
+    $("rHelp").text(App.UserData[6]);
+    $("rAssess").text(App.UserData[8]);
   }
 
 }
 
 $(document).ready(function () {
+ // MainButtons.showReport();
   TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();

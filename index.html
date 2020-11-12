@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <title>Decision Making Tool</title>
 </head>
 
 <body>
     <div id="parentdiv">
-        <h1 id="headerarea">Decision Making Tool</h1>
+        <h1 id="headerarea"><img id=logo src="wings2life.png">Decision Making Tool</h1>
         <div id="buttonarea" >
             <div id="buttons">
                 <button class="btn" id="b1" onclick="MainButtons.showDataEntryPane(0)" disabled>Problem</button>
@@ -112,7 +111,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="4">Problem of the user</th>
+                            <th>Problem </th>
+                            <th colspan="3"id = "rProblem">Problem of the user</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,34 +122,18 @@
                             <td>Values</td>
                             <td>Feelings</td>
                         </tr>
-                        <div id="choicesData">
-                            <tr>
-                                <td>Choices</td>
-                                <td>Consequences</td>
-                                <td>Values</td>
-                                <td>Feelings</td>
-                            </tr>
-                            <tr>
-                                <td>Choices</td>
-                                <td>Consequences</td>
-                                <td>Values</td>
-                                <td>Feelings</td>
-                            </tr>
-                            <tr>
-                                <td>Choices</td>
-                                <td>Consequences</td>
-                                <td>Values</td>
-                                <td>Feelings</td>
-                            </tr>
-                        </div>
+                        <tbody id="rChoices"></tbody>
                         <tr>
-                            <td colspan="4">Additional Info</td>
+                            <td>Additional Info </td>
+                            <td colspan="3" id="rMoreInfo">Additional Info</td>
                         </tr>
                         <tr>
-                            <td colspan="4">Who can help</td>
+                            <td>Who Can Help</td>
+                            <td colspan="3" id="rHelp">Who can help</td>
                         </tr>
                         <tr>
-                            <td colspan="4">Assess Decision</td>
+                            <td>Assess Decision</td>
+                            <td colspan="3" id="rAssess">Assess Decision</td>
                         </tr>
                     </tbody>
                 </table>
@@ -157,7 +141,6 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="function.js"></script>
 
 </body>
