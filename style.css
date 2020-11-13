@@ -240,3 +240,14 @@ h3{
 }
 }
 /*----------------------------------------------------------------------------------------*/
+#forward{
+    float: right;
+    margin-right: 20%;
+}
+
+.leftFloat{
+    float: left;
+}
+.multiLine{
+    white-space: pre;
+}
