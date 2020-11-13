@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="wings2life.png"/>
     <title>Decision Making Tool</title>
 </head>
 
 <body>
     <div id="parentdiv">
-        <h1 id="headerarea"><img id=logo src="wings2life.png">Decision Making Tool</h1>
+        <h1 id="headerarea"><img id="logo" src="wings2life.png">Decision Making Tool</h1>
         <div id="buttonarea" >
             <div id="buttons">
                 <button class="btn" id="b1" onclick="MainButtons.showDataEntryPane(0)" disabled>Problem</button>
@@ -39,8 +40,8 @@
                 <div style="text-align: center;">
                     <button class="ibtn" type="button" id="AddMore" onclick="DataEntryPane.addChoices()" disabled> Add
                         More </button>
-                    <button class="ibtn" type="button" id="InputRemoveBtn" onclick="RemoveCurrent()" disabled> Remove
-                    </button>
+                    <!-- <button class="ibtn" type="button" id="InputRemoveBtn" onclick="RemoveCurrent()" disabled> Remove
+                    </button> -->
                     <button class="ibtn" type="button" id="InputPreviousBtn" onclick="ShowPrevious()" disabled> Previous
                     </button>
                     <button class="ibtn" type="button" id="InputNextBtn" onclick="DataEntryPane.nextChoice()"
