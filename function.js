@@ -365,7 +365,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-  //  TestSuite.focusOnSubmit();
+  TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
