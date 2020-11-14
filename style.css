@@ -240,3 +240,20 @@ h3{
 }
 }
 /*----------------------------------------------------------------------------------------*/
+#forward{
+    float: right;
+    margin-right: 20%;
+}
+
+.topAlign{
+    vertical-align: top;
+}
+.multiLine{
+    white-space: pre;
+}
+#rProblem{
+    
+    width: 100%;
+    background-color: #f35757;
+    color: white;
+}
