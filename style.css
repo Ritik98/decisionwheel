@@ -1,4 +1,49 @@
 
+.main-block {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ecebeb;
+    margin: 10px;
+    box-shadow: 5px 5px 5px;
+    border-radius: 10px;
+    color: #666;
+}
+.main-block h1 {
+    font-size: 20px;
+    width: 95%;
+    background-color: #3aa7a7;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #a7d9e0;
+    color: black;
+    font-weight: 500;
+}
+ .main-block h1, .main-block h3 { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    color: #666;
+    }
+    .main-block h1, .main-block h3 {
+    font-weight: 400;
+    padding: 5px;
+    }
+    .main-block h1 {
+    font-size: 28px;
+    }
+    form {
+    width: 86%; 
+    border-radius: 5px; 
+    border: solid 1px #ccc;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+    background: #ebebeb; 
+    }
+    .main-block ul{
+        margin: 10px 0px;
+    }
 table {
     width: 80%;
     margin: auto;
