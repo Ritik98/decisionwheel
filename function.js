@@ -356,8 +356,9 @@ var MainButtons = {
       classChoice = "selected";
       else
       classChoice ="notselected";
-      $("#rChoices").append('<div class="main-block"><h1>'+App.UserData[1][i]+'</h1><div class="choiceContent">');
-     /* for(var j=2;j<6;j++)
+      $("#rChoices").append('<tr class = "'+ classChoice +'"><td>' + App.UserData[1][i] +'</td><td>'+App.UserData[2][i]+'</td><td>'+App.UserData[3][i]+'</td><td>'+App.UserData[4][i]+'</td></tr>');
+      /* $("#rChoices").append('<div class="main-block"><h1>'+App.UserData[1][i]+'</h1><div class="choiceContent">');
+     for(var j=2;j<6;j++)
       <div class="main-block">
       <h1>Choice1</h1>
       <div class="choiceContent">
