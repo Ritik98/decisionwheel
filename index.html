@@ -35,7 +35,7 @@
                     <h3>Select from the given Choices</h3>
                 </div>
                 <textarea id="iResponse" style="text-align: center;"></textarea>
-                <div id="choiceList"></div>
+                <div id="choiceLists"></div>
                 <br>
                 <div style="text-align: center;">
                     <button class="ibtn" type="button" id="AddMore" onclick="DataEntryPane.addChoices()" disabled> Add
@@ -109,24 +109,19 @@
         <div id="finalReport" class="container" hidden>
             <h1 id="rProblem">Problem of The user </h1>
             <div id = "rChoices"></div>
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>Additional Info </td>
-                        <td colspan="3" id="rMoreInfo">Additional Info</td>
-                    </tr>
-                    <tr>
-                        <td>Who Can Help</td>
-                        <td colspan="3" id="rHelp">Who can help</td>
-                    </tr>
-                    <tr>
-                        <td>Assess Decision</td>
-                        <td colspan="3" id="rAssess">Assess Decision</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div id = "rEntries">
+                        <h2>Additional Info </h2>
+                        <div id="rMoreInfo">Additional Info</div>
+
+                        <h2>Who Can Help</h2>
+                        <div   id="rHelp">Who can help</div >
+
+                        <h2>Assess Decision</h2>
+                        <div   id="rAssess">Assess Decision</div >
+
             </div>
+
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
