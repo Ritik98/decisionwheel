@@ -23,8 +23,8 @@ var App = {
     $(viewmap[this.last_visible_view]).show();
   },
   choiceTemplate(id,index,classChoice){
-    var tempid = "rChoice"+index;
-    $(id).append('<div class="main-block '+ classChoice +' "  id="'+tempid+'"></div>');
+    var tempid = id+index;
+    $("#" + id + "s").append('<div class="main-block '+ classChoice +' "  id="'+tempid+'"></div>');
     tempid = "#" + tempid;
     $(tempid).append('<h1>'+this.UserData[1][index]+'</h1><div class = "choiceContent"></div>');
     $(tempid + " .choiceContent").append('<h3>Consequences</h3><ul class = "cons"></ul><h3>Values</h3><ul class = "values"></ul><h3>Feelings</h3><ul class = "feelings"></ul>');
@@ -164,7 +164,7 @@ var DataEntryPane = {
     PreviewPane.refresh();
     $("#iResponse").show();
     $("#SubmitResponse").prop('disabled', false);
-    $("#choiceList").text("");
+    $("#choiceLists").text("");
 
   },
   SubmitResponse() {
@@ -272,7 +272,8 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceList").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      //App.choiceTemplate( "choiceList",i,"notselected" );
     }
   },
   prepareForEdit() {
@@ -379,18 +380,18 @@ var MainButtons = {
       classChoice = "selected";
       else
       classChoice ="notselected";
-        App.choiceTemplate("#rChoices",i,classChoice);
+        App.choiceTemplate("rChoice",i,classChoice);
 
     }
-    $("rMoreInfo").text(App.UserData[5]);
-    $("rHelp").text(App.UserData[6]);
-    $("rAssess").text(App.UserData[8]);
+    $("#rMoreInfo").text(App.UserData[5]);
+    $("#rHelp").text(App.UserData[6]);
+    $("#rAssess").text(App.UserData[8]);
   }
 
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnSubmit();
+//  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });

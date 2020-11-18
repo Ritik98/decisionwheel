@@ -1,3 +1,7 @@
+#rEntries{
+  text-align: left;
+  margin: inherit;
+}
 .choiceContent{
     width: 95%;
     text-align: left;
@@ -40,20 +44,6 @@
     .main-block ul{
         margin: 10px 0px;
     }
-table {
-    width: 80%;
-    margin: auto;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-table,th,td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th,td {
-    height: 25px;
-    text-align: left;
-}
 #finalReport{
     text-align: center;
     background-color: white;
