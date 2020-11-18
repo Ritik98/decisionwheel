@@ -379,34 +379,8 @@ var MainButtons = {
       classChoice = "selected";
       else
       classChoice ="notselected";
-      //$("#rChoices").append('<tr class = "'+ classChoice +'"><td>' + App.UserData[1][i] +'</td><td>'+App.UserData[2][i]+'</td><td>'+App.UserData[3][i]+'</td><td>'+App.UserData[4][i]+'</td></tr>');
-    //  for (var i=0;i<App.UserData[1].length;i++){
         App.choiceTemplate("#rChoices",i,classChoice);
-      //}
-      /* $("#rChoices").append('<div class="main-block"><h1>'+App.UserData[1][i]+'</h1><div class="choiceContent">');
-     for(var j=2;j<6;j++)
-      <div class="main-block">
-      <h1>Choice1</h1>
-      <div class="choiceContent">
-      <h3>Consequences</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      <h3>Values</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      <h3>Feeling</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      */
+
     }
     $("rMoreInfo").text(App.UserData[5]);
     $("rHelp").text(App.UserData[6]);
@@ -416,7 +390,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-  TestSuite.focusOnSubmit();
+  //TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
