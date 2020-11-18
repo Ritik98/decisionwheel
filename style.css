@@ -3,8 +3,8 @@
     text-align: left;
 }
 .main-block {
+    display: inline-flex;
     width: 250px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ecebeb;
@@ -22,7 +22,7 @@
     color: black;
     font-weight: 500;
 }
- .main-block h1, .main-block h3 { 
+ .main-block h1, .main-block h3 {
     padding: 0;
     margin: 0;
     outline: none;
@@ -73,6 +73,9 @@ th,td {
     margin-left: 20px;
 
 }
+#rChoices{
+  text-align: center;
+}
 
 @media only screen and (min-width: 50em)
 /* ---for pc and dekstop ---*/
@@ -120,7 +123,10 @@ Body{
 }
 
 .selected{
-    background-color: rgb(160, 253, 160);
+    box-shadow: 5px 5px 5px green;
+}
+.selected h1{
+    background-color: #7fe77f;
 }
 /*-------------------------------------------------------------------------------------- */
 .btn {
@@ -134,7 +140,7 @@ Body{
     transition-duration: 0.4s;
     cursor: pointer;
     margin:4%;
-    background-color: white; 
+    background-color: white;
     border: 2px solid #006699;
     border-radius:10px;
 }
@@ -179,7 +185,7 @@ Body{
 }
 h3{
     font-size: 1.3rem;
-    
+
 }
 .content{
     font-size: 1.2rem;
@@ -293,7 +299,7 @@ h3{
     white-space: pre;
 }
 #rProblem{
-    
+
     width: 100%;
     background-color: #f35757;
     color: white;
