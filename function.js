@@ -21,9 +21,34 @@ var App = {
     $(viewmap[this.last_visible_view]).hide();
     this.last_visible_view = viewname;
     $(viewmap[this.last_visible_view]).show();
+  },
+  choiceTemplate(id,index){
+    var tempid = "rChoice"+index;
+    $(id).append('<div class="main-block" id="'+tempid+'"></div>');
+    $(tempid).append('<h1>'+this.UserData[1][index]+'</h1>');
+    $(id).append('<div class="choiceContent"><h3>Consequences</h3><ul>')
+    var tempconsequences = this.UserData[2][index].split("\n")
+    for(var i=0;i<tempconsequences.length;i++){
+      $(id).append('<li>'+tempconsequences[i]+'</li>')
+    }
+    $(id).append('</ul><h3>Values</h3><ul>')
+    var tempvalues = this.UserData[3][index].split("\n")
+    for(var i=0;i<tempvalues.length;i++){
+      $(id).append('<li>'+tempvalues[i]+'</li>')
+    }
+    $(id).append(' </ul><h3>Feeling</h3><ul>')
+    var tempfeelings = this.UserData[4][index].split("\n")
+    for(var i=0;i<tempfeelings.length;i++){
+      $(id).append('<li>'+tempfeelings[i]+'</li>')
+    }
+    $(id).append('</ul></div>');
   }
 }
-
+/*rChoices =>.main-block #rChoices0
+#rChoices0 => h1 choiceContent
+#rChoices0 .choiceContent => h3 tags +ul tags with their class
+#rChoices0 respective class=>li tags
+*/
 var TestSuite =
 {
 
@@ -357,6 +382,9 @@ var MainButtons = {
       else
       classChoice ="notselected";
       $("#rChoices").append('<tr class = "'+ classChoice +'"><td>' + App.UserData[1][i] +'</td><td>'+App.UserData[2][i]+'</td><td>'+App.UserData[3][i]+'</td><td>'+App.UserData[4][i]+'</td></tr>');
+      /*for (var i=0;i<App.UserData[1].length;i++){
+        App.choiceTemplate("#rChoices",i);
+      }
       /* $("#rChoices").append('<div class="main-block"><h1>'+App.UserData[1][i]+'</h1><div class="choiceContent">');
      for(var j=2;j<6;j++)
       <div class="main-block">
@@ -390,7 +418,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnSubmit();
+  TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
