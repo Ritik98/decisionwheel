@@ -21,9 +21,32 @@ var App = {
     $(viewmap[this.last_visible_view]).hide();
     this.last_visible_view = viewname;
     $(viewmap[this.last_visible_view]).show();
-  }
+  },
+  choiceTemplate(id,index,classChoice){
+    var tempid = id+index;
+    $("#" + id + "s").append('<div class="main-block '+ classChoice +' "  id="'+tempid+'"></div>');
+    tempid = "#" + tempid;
+    $(tempid).append('<h1>'+this.UserData[1][index]+'</h1><div class = "choiceContent"></div>');
+    $(tempid + " .choiceContent").append('<h3>Consequences</h3><ul class = "cons"></ul><h3>Values</h3><ul class = "values"></ul><h3>Feelings</h3><ul class = "feelings"></ul>');
+    var tempconsequences = this.UserData[2][index].split("\n")
+    for(var i=0;i<tempconsequences.length;i++){
+      $(tempid + " .cons").append('<li>'+tempconsequences[i]+'</li>')
+    }
+    var tempvalues = this.UserData[3][index].split("\n")
+    for(var i=0;i<tempvalues.length;i++){
+      $(tempid + " .values").append('<li>'+tempvalues[i]+'</li>')
+    }
+    var tempfeelings = this.UserData[4][index].split("\n")
+    for(var i=0;i<tempfeelings.length;i++){
+      $(tempid  + " .feelings").append('<li>'+tempfeelings[i]+'</li>')
+    }
+      }
 }
-
+/*rChoices =>.main-block #rChoices0
+#rChoices0 => h1 choiceContent
+#rChoices0 .choiceContent => h3 tags +ul tags with their class
+#rChoices0 respective class=>li tags
+*/
 var TestSuite =
 {
 
@@ -87,10 +110,10 @@ var TestSuite =
     App.State.CurrentStage = 9;
     App.UserData = [
       "focusOnSubmit",
-      ["choice1", "choice2", "choice3"],
-      ["con1", "con2", "con3"],
-      ["val1", "val2", "val3"],
-      ["feel1", "feel2", "feel3"],
+      ["choice1", "choice2", "choice3","choice4"],
+      ["con1", "con2", "con3","choice3"],
+      ["val1", "val2", "val3","choice3"],
+      ["feel1", "feel2", "feel3","choice3"],
       "gjjvhg",
       "bvjkjkbb",
       "choice2",
@@ -141,7 +164,7 @@ var DataEntryPane = {
     PreviewPane.refresh();
     $("#iResponse").show();
     $("#SubmitResponse").prop('disabled', false);
-    $("#choiceList").text("");
+    $("#choiceLists").text("");
 
   },
   SubmitResponse() {
@@ -249,7 +272,8 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceList").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      //App.choiceTemplate( "choiceList",i,"notselected" );
     }
   },
   prepareForEdit() {
@@ -356,40 +380,18 @@ var MainButtons = {
       classChoice = "selected";
       else
       classChoice ="notselected";
-      $("#rChoices").append('<div class="main-block"><h1>'+App.UserData[1][i]+'</h1><div class="choiceContent">');
-     /* for(var j=2;j<6;j++)
-      <div class="main-block">
-      <h1>Choice1</h1>
-      <div class="choiceContent">
-      <h3>Consequences</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      <h3>Values</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      <h3>Feeling</h3>
-      <ul>
-          <li>con1</li>
-          <li>con2</li>
-          <li>con3</li>
-      </ul>
-      */
+        App.choiceTemplate("rChoice",i,classChoice);
+
     }
-    $("rMoreInfo").text(App.UserData[5]);
-    $("rHelp").text(App.UserData[6]);
-    $("rAssess").text(App.UserData[8]);
+    $("#rMoreInfo").text(App.UserData[5]);
+    $("#rHelp").text(App.UserData[6]);
+    $("#rAssess").text(App.UserData[8]);
   }
 
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnSubmit();
+//  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
