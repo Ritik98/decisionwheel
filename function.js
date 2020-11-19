@@ -153,11 +153,13 @@ var DataEntryPane = {
 
   },
   decisionChoice(choice) {
+    console.log(choice);
     if (App.EDIT_MODE) {
       App.UserData[App.edit] = App.UserData[this.pivot][choice];
     }
     else {
       App.UserData[App.State.CurrentStage] = App.UserData[this.pivot][choice];
+      console.log(App.UserData[this.pivot][choice]);
       MainButtons.toggleButton(++App.State.CurrentStage, true);
     }
     App.showView("preview");
@@ -272,8 +274,13 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
-      //App.choiceTemplate( "choiceList",i,"notselected" );
+     // $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      App.choiceTemplate( "choiceList",i,"notselected" );
+      $('#choiceList'+ i).attr('onclick', 'DataEntryPane.decisionChoice('+i+')');
+      // $("#choiceList"+ i).click(function(){
+      //   alert("the not respons");
+      //   DataEntryPane.decisionChoice(i);
+      // });
     }
   },
   prepareForEdit() {
@@ -391,7 +398,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-//  TestSuite.focusOnDecision();
+  TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
