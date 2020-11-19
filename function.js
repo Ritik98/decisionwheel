@@ -272,8 +272,13 @@ var DataEntryPane = {
     $("#iResponse").hide();
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
-      $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
-      //App.choiceTemplate( "choiceList",i,"notselected" );
+     // $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+      App.choiceTemplate( "choiceList",i,"notselected" );
+      $('#choiceList'+ i).attr('onclick', 'DataEntryPane.decisionChoice('+i+')');
+      // $("#choiceList"+ i).click(function(){
+      //   alert("the not respons");
+      //   DataEntryPane.decisionChoice(i);
+      // });
     }
   },
   prepareForEdit() {
@@ -391,7 +396,7 @@ var MainButtons = {
 }
 
 $(document).ready(function () {
-//  TestSuite.focusOnDecision();
+  //TestSuite.focusOnDecision();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
