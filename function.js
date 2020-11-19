@@ -153,13 +153,11 @@ var DataEntryPane = {
 
   },
   decisionChoice(choice) {
-    console.log(choice);
     if (App.EDIT_MODE) {
       App.UserData[App.edit] = App.UserData[this.pivot][choice];
     }
     else {
       App.UserData[App.State.CurrentStage] = App.UserData[this.pivot][choice];
-      console.log(App.UserData[this.pivot][choice]);
       MainButtons.toggleButton(++App.State.CurrentStage, true);
     }
     App.showView("preview");
