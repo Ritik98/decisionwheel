@@ -155,16 +155,19 @@ var DataEntryPane = {
   decisionChoice(choice) {
     if (App.EDIT_MODE) {
       App.UserData[App.edit] = App.UserData[this.pivot][choice];
+      App.EDIT_MODE=false;
     }
     else {
       App.UserData[App.State.CurrentStage] = App.UserData[this.pivot][choice];
       MainButtons.toggleButton(++App.State.CurrentStage, true);
     }
+    $("#choiceLists .main-block").removeClass("selected");
+    $("#choiceList"+choice).addClass("selected");
     App.showView("preview");
     PreviewPane.refresh();
     $("#iResponse").show();
     $("#SubmitResponse").prop('disabled', false);
-    $("#choiceLists").text("");
+    $("#choiceLists").hide();
 
   },
   SubmitResponse() {
@@ -273,8 +276,13 @@ var DataEntryPane = {
     $("#SubmitResponse").prop('disabled', true);
     for (var i = 0; i < App.UserData[this.pivot].length; i++) {
      // $("#choiceLists").append('<button class="choiceOption" onClick="DataEntryPane.decisionChoice(' + i + ')">' + App.UserData[this.pivot][i] + '</button>');
+     if(App.EDIT_MODE){
+     $("#choiceLists").show();
+     }
+     else{
       App.choiceTemplate( "choiceList",i,"notselected" );
       $('#choiceList'+ i).attr('onclick', 'DataEntryPane.decisionChoice('+i+')');
+     }
       // $("#choiceList"+ i).click(function(){
       //   alert("the not respons");
       //   DataEntryPane.decisionChoice(i);
