@@ -282,11 +282,9 @@ h3{
 /*----------------------------------------------------------------------------------------*/
 #forward{
     float: right;
-    margin-right: 20%;
 }
-
-.topAlign{
-    vertical-align: top;
+#backward{
+    float: right;
 }
 .multiLine{
     white-space: pre;

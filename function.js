@@ -40,7 +40,7 @@ var App = {
     for(var i=0;i<tempfeelings.length;i++){
       $(tempid  + " .feelings").append('<li>'+tempfeelings[i]+'</li>')
     }
-      }
+  }
 }
 /*rChoices =>.main-block #rChoices0
 #rChoices0 => h1 choiceContent
@@ -397,14 +397,17 @@ var MainButtons = {
 
     }
     $("#rMoreInfo").text(App.UserData[5]);
-    $("#rHelp").text(App.UserData[6]);
+    var tempHelp = App.UserData[6].split("\n")
+    for(var i=0;i<tempHelp.length;i++){
+      $("#rHelp").append('<li>'+tempHelp[i]+'</li>')
+    }
     $("#rAssess").text(App.UserData[8]);
   }
 
 }
 
 $(document).ready(function () {
-  //TestSuite.focusOnDecision();
+ // TestSuite.focusOnSubmit();
   MainButtons.toggleButton(App.State.CurrentStage, true);
   PreviewPane.refresh();
 });
